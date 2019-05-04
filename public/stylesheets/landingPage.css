@@ -1,0 +1,110 @@
+body
+{
+    background-color: #e9ebee;
+}
+.mainElements 
+{
+    padding-left: 100px;
+}
+.bg-danger
+{
+   background-color:  #283e4a !important;
+   transition: background 989ms !important;
+}
+
+.navbar-brand
+{
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+.nav-link
+{
+  font-size: 19px;
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.nav-link.user
+{
+    color: #E0E0E0 !important;
+    font-size: 16px;
+}
+
+
+#postTitle
+{
+    margin-top:100px;
+}
+.postBackground
+{
+    background-color: white !important;
+}
+
+@media only screen and (max-width: 1093px) {
+    .fullName
+    {
+        display: inline-block;
+        font-size: 0.79rem;
+        width: 49.2% !important;
+    }
+/**login condensed/*/
+
+}@media only screen and (max-width: 413px) {
+    .loginPull
+    {
+        display: inline-block;
+        width: 49px !important;
+        font-size: 12px;
+    }
+    .signInPull
+    {
+        display: inline-block;
+        width: 102px !important;
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 869px) {
+    .fullName
+    {
+        display: inline-block;
+        font-size: 0.79rem;
+        width: 48% !important;
+    }
+}
+@media only screen and (max-width: 304px) {
+    .fullName
+    {
+        display: inline-block;
+        font-size: 0.79rem;
+        width: 47.9% !important;
+    }
+}
+.fullName
+{
+    display: inline-block;
+    width: 49.2%;
+}
+.signInPull
+{
+    display: inline-block;
+    width: 142px;
+    font-size: 12px;
+}
+.loginPull
+{
+    display: inline-block;
+    width: 49px;
+    font-size: 12px;
+}
+.bg-none
+{
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+.btn-outline-info:hover
+{
+    background-color:#1DA1F2 !important;
+}
+.btn-outline-info
+{
+    border-color:#1DA1F2 !important;
+}

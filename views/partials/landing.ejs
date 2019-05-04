@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Finna | Go Beyond</title>
+        <meta name="google-site-verification" content="_4x3JDIpLb68RFqPAR6ruBfVTE0MpDnSxvPk7YnsqEc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC|Ubuntu:700" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script  >
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="https://momentjs.com/downloads/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <base href="/">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="shortcut icon" href="/image/connectomeFavicon.png" type="image/x-icon">
+        <link rel="stylesheet"  type="text/css" href="stylesheets/landingPage.css">
+        <link rel="icon" href="/image/connectomeFavicon.png" type="image/x-icon">
+        </head>
+<body> 
+<nav id="finnaNavbar"class="navbar currentColor navbar-expand-sm navbar-dark fixed-top bg-none">
+    <span class="navbar-brand">Finna <i class="fas fa-puzzle-piece"></i></span>
+    <button class="ml-5 navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=" navbar-toggler-icon"></span>
+  </button>
+  </button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav ml-auto" style="margin-right:9%">
+            <li class="nav-item">
+                <form action="/login" autocomplete="off" method="POST">
+        <div class="form-group mt-2">
+            <input type="text" class="signInPull mr-3 form-control" name="username" placeholder="username"  required>
+            <input type="password" class="signInPull form-control"  name="password" placeholder="password" required>
+            <button class="btn loginPull form-control ml-2 mb-1 p-1 btn-success"><span>Login</span></button>
+        </div>
+    </form>
+  </li>
+  <li class="nav-item">
+      <a href="/google" class="btn loginPull mt-2 form-control ml-2 mb-1 p-1 btn-primary"><span><i class="fab fa-google"></i></span></a>
+  </li>
+</ul>
+</div>
+</nav>
+
+<div style="margin-top:86px;" class="container">
+
+    <% if(error && error.length > 0){ %>
+        <div style="margin-bottom:-80px;" class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+        <div style="margin-bottom:-80px;" class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+    <% } %>
+    <% if(warning && warning.length > 0){ %>
+        <div style="margin-bottom:-80px;" class="alert alert-warning" role="alert">
+            <%= warning %>
+        </div>
+    <% } %>
+</div>
+<div style="margin-top:86px; background-color:rgba(40, 60, 74, 0.3);" class="row options pt-0 text-center">
+    <div style="margin-top:-50px; margin-bottom:-23.5px;"class="col-lg-5 col-xs-6">
+        <div style="color:#283e4a !important;"class="mt-5">
+            <button style="padding-bottom:51%;padding-top:40%;"data-toggle="modal" data-target="#organizationModal" class="btn-info mb-4 mr-5 btn-block btn btn-lg rounded"><strong style="font-size:2.7rem;">Current Organization?</strong></button>
+    </div>
+    </div>
+    <div style="margin-top:-48px;" class="d-none col-xs-0 d-lg-block col-lg-2">
+        <p style="margin-top:125%; border-radius:100px; padding:10px;" class="bg-white ml-5 display-4">OR</p>
+    </div>
+    <div style="margin-top:-49.2px; margin-bottom:-30px;" class="col-xs-6 col-lg-5">
+        <div style="color:#283e4a !important;"class="mt-5 text-center">
+         <button style="padding-bottom:51%;padding-top:40%;" data-toggle="modal" data-target="#entreprenuerModal" class="mb-4 ml-5 btn btn-lg rounded btn-block btn-success"><strong style="font-size:2.7rem;">Aspiring Entrepreneur?</strong></button>
+    </div>
+</div>
+</div>
+<br><br>
+<br><br>
+    <p class="text-center display-4 mt-3 mb-5">Are you <span style="font-size:1.3em;"><em>Finna...</em></span></p>
+
+<div class="mt-5 text-center" style="color: #1DA1F2 !important">
+        <span style="font-size:3rem !important;" class="lead mr-5 ml-5"><strong>Innovate.</strong></span>
+        <span style="font-size:3rem !important;" class="lead ml-5 mr-5"><strong>Connect.</strong></span>
+        <span style="font-size:3rem !important;" class="lead ml-5 mr-5"><strong>Grow.</strong></span>
+</div>
+
+
+<!--Entrepreneur Modal-->
+<div style="margin-top:49px"class="modal fade" id="entreprenuerModal" tabindex="-1" role="dialog" aria-labelledby="entreprenuerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="display-4 modal-title" id="entreprenuerModalLabel">Sign Up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; flex-wrap: wrap;">
+        <div>
+            <form id="localsignupform" onsubmit="return crossreferencecheckingforwhetherusermadeamistakeliketheoneisawforMITapplication()" action="/" method="POST">
+                <div class="form-group">
+                    <input type="text" autocomplete="on"class="fullName form-control" name="firstName" placeholder="First Name" oninvalid="this.setCustomValidity('Please Enter your first name')" oninput="setCustomValidity('')" required>
+                    <input type="text" class="fullName form-control" name="lastName" placeholder="Last Name" oninvalid="this.setCustomValidity('Please Enter your Last name')"oninput="setCustomValidity('')"  required>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-at"></i></span>
+                    </div>
+                    <input id="userEmailAddress"onKeyDown="dynamicEmailUsernameCrossReferenceSynchronization()" type="email" name="email" class="form-control" placeholder="Email" required  oninvalid="this.setCustomValidity('Please enter a valid email address!')"oninput="setCustomValidity('')" minlength="4">
+                </div>
+                
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user-alt"></i></span>
+                    </div>
+                    <input id="usernameOfUserFromCrossSynchronizationOfEmailAddress" type="text" name="username" class="form-control"  oninvalid="this.setCustomValidity('Username and first part of your email do not match. Please don't try to act smart...)" oninput="setCustomValidity('')" placeholder="username" readonly  minlength="4">
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input id="passwordTyping" type="password" name="password"  oninvalid="this.setCustomValidity('Not strong enough!')"oninput="setCustomValidity('')" class="form-control" placeholder="create password"required minlength="9">
+                </div>
+                <br>
+                <div style="opacity:0;" id="showHideConfirmPassword" class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-unlock-alt"></i></span>
+                    </div>
+                    <input id="confirmingPassword" type="password" oninvalid="this.setCustomValidity('Passwords do not match!')"oninput="setCustomValidity('')" class="form-control" placeholder="confirm password"required>
+                </div>
+                
+                <div class="form-group">
+                    <h4>Birthday</h4> <input type="date" name="birthday"  oninvalid="this.setCustomValidity('Please Enter your birthday')"oninput="setCustomValidity('')" class="form-control" required>
+                </div>
+
+                  <span class="gender align-items-center justify-content-center">
+                        <input type="radio" required name="sex" value="male">
+                        <label for="male">Male</label>
+                  </span>
+                  <span class="gender ml-md-5 ml-sm-3">
+                      <input type="radio" required name="sex" value="female">
+                      <label for="female">Female</label>
+                  </span>
+                  <div class="form-group">
+                    <input id="date" type="hidden" class="form-control" name="dateCreated">
+                </div>
+                <div>
+                    <div class="modal-footer">
+                        <button id="buttontosignupuserslocally" class="btn btn-md btn-success btn-inline">Register</button>
+                        <a href="/google"class="btn btn-md btn-primary btn-inline">Continue With <i class="fab fa-google"></i></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+<br><br>
+<br><br>
+<div class="text-center">
+<div class="row">
+    <div class="col-lg-4">
+        <p class="display-4 mb-5"><strong>Building Teams and Growing Start-ups</strong></p>
+        <p style="font-size:1.6em !important;" class="container lead">Connect and interact with fellow innovators, learn about upcoming pitch competitions and events, and interface with potential investors.</p>
+    </div>
+    <div class="col-lg-8">
+        <img class="img-fluid" style="opacity:0.9;width: 100%; height:79%; display: block;"src="https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/f/72/f72d5110-2325-53ce-9715-3101958376f5/5bad3569b2f71.image.jpg?resize=1200%2C800
+">
+    </div>
+    <div style="margin-top:-9.04%;" class="col-lg-8">
+        <img class="img-fluid" style="opacity:0.9;width: 100%; height:95%; display: block;"src="https://www.moneredevelopmentservices.com/wp-content/uploads/2018/06/365728-636190610546181732-16x9.jpg">
+    </div>
+    <div style="margin-top:-7.9%;" class="col-lg-4 ">
+        <p class="display-4 mb-5"><strong>Our Purpose</strong></p>
+        <p style="font-size:1.6em !important;" class="container lead">Finna is committed to connecting entrepreneurs to co-founders, entrepreneurial organizations, investors, and feedback on new ideas. With Finna, entrepreneurs will have the connections and support they need to drive their business to the next level.</p>
+    </div>
+    <div style="margin-top:-1.85%;" class="col-lg-4">
+        <p class="display-4 mb-5"><strong>Our Platform</strong></p>
+        <p style="font-size:1.6em !important;" class="container lead">Finna utilizes key research on effective teams to suggest equally driven co-founders that will complement and expand upon your current teams’ skills.
+</p>
+        <p style="font-size:1.6em !important;" class="container lead">Our platform helps existing start-ups connect with investors, incubators, and other entrepreneurial organizations based on qualifications and investment criteria.  </p>  </div>
+    <div style="margin-top:-1.85%;" class="col-lg-8">
+        <img class="img-fluid" style="opacity:0.9;width: 100%; height:95%; display: block;"src="https://www.parkersoftware.com/wp-content/uploads/2017/11/code-944499_1280-1024x550.jpg">
+    </div>
+<div style="margin-top:100px;" class="col-lg-12 mb-5">
+        <p class="display-1">Meet our team</p>
+    </div>
+    <div class="col-lg-4">
+        <a href="https://www.linkedin.com/in/dguckian"><img style="border-radius:1000px; width:289px; height:289px;" class="clearfix img-fluid"src="https://media.licdn.com/dms/image/C4E03AQEqlD_bPOocRA/profile-displayphoto-shrink_800_800/0?e=1557964800&v=beta&t=Zn0Na3HS-AgVRJK7dmRH1gPUKlaWxgHmk9CL8daQlkg
+"></a>
+        <p class="lead">David Guckian</p>
+        <p style="margin-top:-10px;" class="lead text-muted">Co-founder, CEO</p>
+    </div>
+    <div class="col-lg-4">
+        <a href="https://linkedin.com/in/qasimwani/"><img style="border-radius:1000px; width:289px; height:289px;" class="img-fluid"src="https://pbs.twimg.com/media/D1kMEm4XcAE7Ocw.jpg:large"></a>
+        <p class="lead">Qasim Wani</p>
+        <p style="margin-top:-10px;" class="lead text-muted">Co-founder, CTO</p>
+    </div>
+    <div class="col-lg-4">
+        <a href="https://www.linkedin.com/in/nick-snodgrass-8a7214bb/"><img style="border-radius:1000px; width:289px; height:289px;" class="img-fluid"src="https://media.licdn.com/dms/image/C4E03AQG-QFqbUp5oQw/profile-displayphoto-shrink_800_800/0?e=1558569600&v=beta&t=obFGKuRsP-ebdFoDFFXlOejZAIKnKVfxvhYDvQggMNw"></a>
+        <p class="lead">Nick Snodgrass</p>
+        <p style="margin-top:-10px;" class="lead text-muted">Co-founder, COO</p>
+    </div>
+    <div class="container col-lg-10">
+        <p style="color:#283e4a !important; font-size:1.3em !important;" class="mt-5 lead">
+        Qasim, David, and Nick met in a moment of complete coincidence at a university entrepreneurship event. Because our paths crossed at that event, we now have the great fortune of working together to build and grow Finna. Our case was extremely dependent on so many variables and sparked the initiative that is Finna. Our goal is to take luck out of the equation and put opportunity in the control of the entrepreneur.</p>
+        <p style="color:#283e4a !important; font-size:1.6em !important;" class="mt-5 lead"><strong>With Finna, no one will need to wait for that serendipitous moment that our team happened to stumble into.</strong></strong></p>
+    </div>
+</div>
+
+</div>
+<script>
+var $password = $("#passwordTyping");
+var $confirm = $("#confirmingPassword");
+
+var $hideShowPasswordForConfirmationLocalAccount = $("#showHideConfirmPassword");
+$password.keyup(function(){
+   if($password.val().length <= 5)
+   {
+      $hideShowPasswordForConfirmationLocalAccount.hide(729);
+       console.log("Password hidden");
+}
+else
+{
+    $hideShowPasswordForConfirmationLocalAccount.css("opacity","1");
+    $hideShowPasswordForConfirmationLocalAccount.css("margin-bottom","10px");
+    $hideShowPasswordForConfirmationLocalAccount.show(696);
+    console.log("Password shown!");
+}
+});
+    
+    function crossreferencecheckingforwhetherusermadeamistakeliketheoneisawforMITapplication()
+    {
+        var $email = $("#userEmailAddress").val().split("@")[0];
+        if($("#usernameOfUserFromCrossSynchronizationOfEmailAddress").val() != $("#userEmailAddress"))
+        {
+            $("#usernameOfUserFromCrossSynchronizationOfEmailAddress").val($email);
+        }
+        
+        
+         if($password.val() !== $confirm.val() && $password.val().length >= 9)
+         {
+            Swal.fire({
+                          type: 'error',
+                          title: 'Cryptic Error',
+                          text: 'Your Passwords do not match',
+                          showConfirmButton: false,
+                          showCancelButton: true,
+                          cancelButtonText: 'Re-type password',
+                          footer:'Confirm your password with the same password you used initially'
+                        })
+            return false;
+         }
+         else
+         {
+            return true;
+         }
+    }
+</script>
+
+<% include ../partials/landingFooter %>

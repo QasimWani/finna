@@ -1,0 +1,139 @@
+<% include ../partials/header %>
+
+<div class="form-group">
+<div style="margin-left:27%;width:39%" class="mt-4 mb-3 input-group">
+<div class="input-group-prepend">
+  <% if(currentUser.profilePicture) { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" width="50" height="50" src="<%=currentUser.profilePicture.replace("/s50/","/")%>"></a></span>
+<% } else { %>
+  <% if(currentUser.sex === 'male') { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px"src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png"></a></span>
+ <% } else { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
+  <% } %>
+<% } %>
+</div>
+<input maxlength='0'style="border-radius: 25px;" autocomplete="off" placeholder="<%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, what are you finna do?"  data-toggle="modal" type="text" data-target="#launchPost" type="text"class="form-control" required>
+</div>
+</div>
+    
+<div class="row">
+<div class="col-md-1 d-md-none d-lg-block col-lg-3">
+  <div class="container">
+<% if(event.length>0) { %>
+  <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;">Your Events</p>
+<% } %>
+<% event.forEach(function(allEvents){ %>
+           <div class="card rounded">
+              <div class="card-body">
+                <h5 class="card-title"><%=allEvents.title%></h5>
+                <img class="img-fluid" src="<%=allEvents.image%>">
+                <p class="lead card-text"><strong>Host</strong> : <span><%=allEvents.author.firstName%> <%=allEvents.author.lastName%></span></p>
+                <hr>
+                <p class="lead"style="font-size:1.2em;"><strong>Location</strong>: <a style="color:black;"href="https://www.google.com/maps/place/<%=allEvents.location%>" id="locationForGMaps"><%=allEvents.location%></a> </p>
+                
+                <% if(allEvents.comments.length>0) { %>
+  <hr style="border:solid 0.4px grey;">
+        <div class="row">
+          <div class="col-10"></div>
+          <div class="col-xs-2">
+          <div class="text-right">
+              <a href="/events/<%=allEvents._id%>"><span class="numberOfComments"><%=allEvents.comments.length%></span></a>
+              <i id="commentButton"style="font-size:1.4rem;"class="far fa-comments"></i>
+          </div>
+              
+          </div>
+        </div>
+<% } %>
+        <br>
+                
+                <a href="/events/<%=allEvents.id%>" class="btn btn-primary">More Information</a>
+              </div>
+            </div>
+            <br>
+<% }) %>
+  
+    
+  </div>
+</div>
+<div class="col-md-10 col-lg-5 container">
+   <div class="modal fade" id="launchPost" tabindex="-1" role="dialog" aria-labelledby="userPost" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="userPost"><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;width:53px;"src="<%=currentUser.profilePicture%>"></a> <%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, <span class="lead"> whatcha' thinkin'?</span></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="form-group">
+            <label class="display-4" for="title">Title</label>
+      <form method = "post" action = "/feed">
+            <input autocomplete="off" placeholder="add title here..." type="text" name ="title" class="form-control" id="usr" required>
+      </div>
+      <div class="form-group">
+        <label class="display-4" for="content">Content</label>
+        <textarea class="form-control" rows="5" name ="description" id="comment" required placeholder="add content here..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="lead" for="image">Image</label>
+          <input autocomplete="off" placeholder="insert image link... " type="text" name ="image" class="form-control" id="image">
+      </div>
+  <button class="btn btn-primary mb-0 btn-lg">Add Post</button>
+  </form>
+      </div>
+    </div>
+  </div>
+</div>      
+      
+
+<br>
+      <% posts.forEach(function(posts){ %>
+      <div class="posts rounded">
+<% if(!posts.author.profilePicture) { %>
+  <% if(posts.author.sex === 'male') { %>
+<a href="/users/<%=posts.author.username%>"><img  style="border-radius:162px;" class="m-3" src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png" alt="Profile Image" width="90" height="90" align="left"></a>
+  <% } else { %>
+     <a href="/users/<%=posts.author.username%>"><img  style="border-radius:162px;" class="m-3" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Profile Image" width="90" height="90" align="left"></a>
+<% } %>
+<% } else { %>
+    <% if(posts.author.profilePicture.includes("/s50/")) {%>
+    <% var profile = posts.author.profilePicture.replace("/s50/","/");%>
+         <a href="/users/<%=posts.author.username%>"><img style="border-radius:162px;"class="m-3" src="<%=profile%>" alt="Profile Image" width="70" height="70" align="left"></a>
+    <% } else { %>
+         <a href="/users/<%=posts.author.username%>"><img  style="border-radius:162px;" class="m-3" src="<%=posts.author.profilePicture%>" alt="Profile Image" width="70" height="70" align="left"></a>
+    <% } %>
+<% } %>
+          <div class="pt-4"><p><span style="font-size:1.6rem;"><%=posts.author.firstName +" " + posts.author.lastName%> </span><a class="nameImageProfileShow" href="/users/<%=posts.author.username%>" > @<strong><%=posts.author.username%></a> </strong> &#9684; <%= posts.created.toDateString() %></p></div>
+        <div class="container">
+           <p class="display-4 titlePost"><a class="postlink" href="/feed/<%= posts._id %>" ><%=posts.title%></p></a>
+           <div class="container">
+              <p class="lead ml-4 titlePost"><a class="postlink" href="/feed/<%= posts._id %>" ><%-posts.description.substring(0,195)%> <span class="blurredOut"><%-posts.description.substring(195, 400)%> . . .</span></p></a>
+          </div>
+          <div class="text-center container">
+             <img class="img-fluid rounded" style="object-fit:cover;"src="<%=posts.image%>">
+          </div>
+        <br>
+<% if(posts.comments.length>0) { %>
+  <hr style="border:solid 0.4px grey;">
+        <div class="row">
+          <div class="col-10"></div>
+          <div class="col-xs-2">
+              <div class="text-right">
+              <a href="/feed/<%=posts._id%>"><span class="numberOfComments"><%=posts.comments.length%></span></a>
+              <i id="commentButton"style="font-size:1.4rem;"class="far fa-comments"></i>
+            </div>
+              
+          </div>
+        </div>
+<% } %>
+        <br>
+      </div>
+    </div>
+    <br>
+      <% }) %> 
+</div>
+
+<div class="col-md-1 col-lg-4"></div>
+</div>
+<% include ../partials/footer %>

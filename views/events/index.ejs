@@ -1,0 +1,111 @@
+<%include ../partials/header%>
+<br>
+<style>
+.modal { 
+   background-color: rgba(184,184,184,0.729); 
+}
+</style>
+<div class="container mt-2">
+<div class="form-group">
+        <div style="margin-left:25%;width:50%" class="mt-4 mb-3 input-group">
+        <div class="input-group-prepend">
+          <% if(currentUser.profilePicture) { %>
+        <span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px; width:53px;height:53px;" class="mr-2" src="<%=currentUser.profilePicture%>"></a></span>
+        <% } else { %>
+          <% if(currentUser.sex === 'male') { %>
+        <span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px"src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png"></a></span>
+         <% } else { %>
+        <span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
+          <% } %>
+        <% } %>
+        </div>
+        <input maxlength='0'style="border-radius: 25px;" autocomplete="off" placeholder="<%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, what event are you planning?"  data-toggle="modal" type="text" data-target="#launchEvent" type="text"class="form-control" required>
+        </div>
+</div>
+<br>
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<% events.forEach(function(allEvents){ %>
+        <div class="mb-5 col-lg-4 col-md-m-3 col-sm-6 col-xs-12">
+           <div class="card" style="border-radius:5%;">
+              <div class="card-body">
+                <h5 class="card-title"><%=allEvents.title%></h5>
+                <img class="eventImages img-fluid" src="<%=allEvents.image%>">
+                <p class="lead card-text"><strong>Host</strong> : <span><%=allEvents.author.firstName%> <%=allEvents.author.lastName%></span></p>
+                <hr>
+                <p class="lead"style="font-size:1.2em;"><strong>Location</strong>: <a style="color:black;"href="https://www.google.com/maps/place/<%=allEvents.location%>" id="locationForGMaps"><%=allEvents.location%></a> </p>
+            
+
+                <% if(allEvents.comments.length>0) { %>
+        <div class="row">
+          <div class="col-10"></div>
+          <div class="col-xs-2">
+          <div class="text-right">
+              <a href="/events/<%=allEvents._id%>"><span class="numberOfComments"><%=allEvents.comments.length%></span></a>
+              <i id="commentButton"style="font-size:1.4rem;"class="far fa-comments"></i>
+          </div>
+              
+          </div>
+        </div>
+<% } %>
+                
+                <a href="/events/<%=allEvents.id%>" class="btn btn-primary">More Information</a>
+              </div>
+            </div> 
+        </div>
+<% }) %>
+    </div>
+</div>
+
+
+<!--MODAL FOR EVENTS-->
+ <div class="modal fade" id="launchEvent" tabindex="-1" role="dialog" aria-labelledby="userPost" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="eventPost"><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;width:53px;"src="<%=currentUser.profilePicture%>"></a> <%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, <span class="lead"> what are you planning?</span></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="form-group">
+            <label class="display-4" for="title">Title</label>
+      <form method = "post" action = "/events">
+            <input autocomplete="off" placeholder="add event title here..." type="text" name ="title" class="form-control" id="usr" required>
+      </div>
+      <div class="form-group">
+        <label class="display-4" for="content">Description</label>
+        <textarea class="form-control" rows="3" name ="description" id="content" required placeholder="add content here..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="display-4" for="location">Location</label>
+            <input autocomplete="on" placeholder="add event location here..." type="text" name ="location" class="form-control" id="location" required>
+      </div>
+      <div class="form-group">
+        <label class="display-4" for="price">Price</label>
+            <input min="0" step="0.25" autocomplete="on" placeholder="add event Price here..." type="number" name ="price" class="form-control" id="price" required>
+      </div>
+      <div class="form-group">
+        <label class="display-4" for="date">Date</label>
+            <input min="0" step="0.25" autocomplete="on" placeholder="when is the event?" type="date" name ="date" class="form-control" id="date" required>
+      </div>
+      <div class="form-group">
+        <label class="display-4" for="image">Image<span style="font-size:0.4em;opacity:0.5;">(optional)</span></label>
+          <input autocomplete="off" placeholder="insert image link for the event... " type="text" name ="image" class="form-control" id="image">
+      </div>
+  <button class="btn btn-primary mb-0 btn-lg">Add Event</button>
+  </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%include ../partials/footer%>
+<script>
+  var images = document.getElementsByClassName("eventImages");
+  for(let i = 0; i < images.length; i++)
+  {
+
+      images[i].style.height  = "300px";
+      images[i].style.width  = "100%";
+  }
+</script>

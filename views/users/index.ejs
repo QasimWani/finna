@@ -1,0 +1,39 @@
+<%include ../partials/header%>
+<br>
+<div class="container mt-2">
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<% users.reverse().forEach(function(allUsers){ %>
+<% if(allUsers.username != currentUser.username && allUsers.email !== currentUser.email) { %>
+        <div class="mb-5 col-lg-4 col-md-m-3 col-sm-6 col-xs-12">
+           <div class="card" style="border-radius:5%;">
+            <% if(!allUsers.profilePicture) { %>
+                <% if(allUsers.sex === 'male'){ %>
+                    <img style="border-radius:3%;height:300px; width:100%; object-fit: cover;" class="card-img-top" src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png" alt="Card image cap">
+                <% } else { %>
+                    <img style="border-radius:3%;height:300px; width:100%; object-fit: cover;" class="card-img-top" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Card image cap">
+                <% } %>
+            <% } else { %>
+            <% var profile = allUsers.profilePicture.replace("/s50/","/");%>
+              <img style="border-radius:3%;border-bottom-left-radius: 1px;border-bottom-right-radius: 1px;height:300px; width:100%; object-fit: cover;" class="card-img-top" src="<%=profile%>" alt="Card image cap">
+            <% } %>  
+              <div class="card-body">
+                <h5 class="card-title"><%=allUsers.firstName%> <%=allUsers.lastName%></h5>
+                <% if(!allUsers.collegeMajor) { %>
+                <p class="card-text"><strong>Major</strong> : <span>Not listed</span></p>
+                <% } else { %>
+                <p class="card-text"><strong>Major</strong> : <span><%=allUsers.collegeMajor%></span></p>
+                <% } %>
+                <% if(!allUsers.university) { %>
+                <p class="card-text"><span>No University Listed</span></p>
+                <% } else { %>
+                <p class="card-text"><%=allUsers.university%> <%=allUsers.classOf%></span></p>
+                <% } %>
+                <a href="/users/<%=allUsers.username%>" class="btn btn-primary">Full Profile</a>
+              </div>
+            </div> 
+        </div>
+<% } %>
+<% }) %>
+    </div>
+</div>
+<%include ../partials/footer%>

@@ -1,0 +1,50 @@
+<%include ../partials/header%>
+<br>
+<div class="container mt-2">
+    <% if(linkedUsers.length === 0) { %>
+    <div><p class="text-center display-2">Your <span style="font-size:1.4em; color: maroon !important;">uniqueness</span> just beat our algorithm.</p></div>
+    <div style="display: flex; justify-content: center;"><img style="border-radius:1.2%;height:100%; width:100%; object-fit: cover;"src="https://blog.appboy.com/wp-content/uploads/2015/11/giphy-29.gif"></div>
+    <br><br>
+    <a class="nameImageProfileShow" href="/feed">Go Back!</a>
+    <br><br>
+    <% } else { %>
+    <div><p style="color: brown !important;" class="text-center display-4">Few users who'd gel with your personality</p></div>
+    <% } %>
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<% linkedUsers.forEach(function(allUsers){ %>
+        <div class="mb-5 col-lg-4 col-md-m-3 col-sm-6 col-xs-12">
+           <div class="card" style="border-radius:5%;">
+            <% if(!allUsers.profilePicture) { %>
+                <% if(allUsers.sex === 'male'){ %>
+                    <img style="border-radius:3%;height:300px; width:100%; object-fit: cover;" class="card-img-top" src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png" alt="Card image cap">
+                <% } else { %>
+                    <img style="border-radius:3%;height:300px; width:100%; object-fit: cover;" class="card-img-top" src="https://www.nicepng.com/png/detail/52-521023_download-free-icon-female-vectors-blank-facebook-profile.png" alt="Card image cap">
+                <% } %>
+            <% } else { %>
+            <% var profile = allUsers.profilePicture.replace("/s50/","/");%>
+              <img style="border-radius:3%;height:300px; width:100%; object-fit: cover;" class="card-img-top" src="<%=profile%>" alt="Card image cap">
+            <% } %>  
+              <div class="card-body">
+                <h5 class="card-title"><%=allUsers.firstName%> <%=allUsers.lastName%></h5>
+                <% if(!allUsers.major) { %>
+                <p class="card-text"><strong>Major</strong> : <span>Not listed</span></p>
+                <% } else { %>
+                <p class="card-text"><strong>Major</strong> : <span><%=allUsers.major%></span></p>
+                <% } %>
+                <% if(!allUsers.classOf) { %>
+                <p class="card-text"><span>No University Listed</span></p>
+                <% } else { %>
+                <p class="card-text"><%=allUsers.classOf%></span></p>
+                <% } %>
+                <a href="/users/<%=allUsers.username%>" class="btn btn-primary">Full Profile</a>
+              </div>
+            </div> 
+        </div>
+<% }) %>
+    </div>
+</div>
+<span class="d-none" id="currentUser"><%=currentUser.firstName%> <%=currentUser.lastName%></span>
+<%include ../partials/footer%>
+<script>
+    document.title = document.getElementById("currentUser").textContent + " | Link";
+</script>

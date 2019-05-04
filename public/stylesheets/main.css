@@ -1,0 +1,262 @@
+body
+{
+    background-color: #e9ebee;
+}
+.mainElements 
+{
+    padding-left: 100px;
+}
+.bg-danger
+{
+   background-image: linear-gradient(to right, #3B5998, #3B5998);
+}
+.navbar-brand
+{
+    font-size: 2rem;
+    font-weight: 400;
+}
+.nav-link
+{
+  font-size: 19px;
+  color: rgba(255,255,255,0.85) !important;
+}
+.nav-link.user
+{
+    color: #E0E0E0 !important;
+    font-size: 16px;
+}
+.posts
+{
+    background-color: white;    
+}
+
+.postlink
+{
+    color: black !important;
+}
+.titlePost
+{
+    margin-left: 47px;
+}
+.postlink:hover
+{
+    text-decoration: none !important;
+    color: brown !important;
+}
+.blurredOut
+{
+    color: transparent;
+   text-shadow: 0 0 5px rgba(0,0,0,0.6);
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -o-user-select: none;
+   user-select: none;
+}
+#postTitle
+{
+    margin-top: 30px;
+}
+.postBackground
+{
+    background-color: white !important;
+}
+
+@media only screen and (max-width: 991px) {
+    
+  .mainElements {
+    padding-left: 0px;
+    margin-left: 0px;
+  }
+  #hr
+    {
+        border-top: 0.5px solid white;
+    } 
+}
+    .page-footer {
+    font-size: 1.3em;
+    bottom: -40px;
+    left: 0;
+    right:0;
+    position: relative;
+    background-color: rgba(128,128,128, 0.2)!important;
+}
+.linksToCompanies
+{
+    margin-left: 10px;
+    font-size: 1.6rem;
+}
+.me
+{
+    text-decoration: none !important;
+    color: maroon !important;
+}
+.me.contact
+{
+    color: hotpink !important;
+    font-size: larger;
+    font-weight: 400;
+}
+a:nth-child(2)
+{
+    text-decoration : none !important;
+}
+.delete-form
+{
+    display: inline;
+    margin-left:7px;
+}
+
+.bg-danger
+{
+   background-image: linear-gradient(to right, #283e4a, #283e4a);
+}
+.mt-5
+{
+    margin-top:0px !important;
+}
+.nameImageProfileShow
+{
+    font-size: 1.3em;
+    text-align: center;
+    color: black !important;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.nameImageProfileShow:hover
+{
+    cursor: pointer;
+    color: maroon !important;
+    text-decoration: none;
+    
+}
+#universityClass
+{
+    color: maroon !important;
+    font-weight: 500;
+}
+#universityName
+{
+    font-weight: 700;
+}
+/*DropDown menu for a user*/
+
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 111px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd; text-decoration:none;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.imgProfileBesidesUsernameInNavbar {
+    float: left; 
+    
+}
+.follow {
+    line-height: 19px;
+    margin-left: 60px;
+}
+
+.dropdown.commentDropdown
+{
+    opacity: 0;
+}
+.dropdown.commentDropdown:hover
+{
+   opacity: 1;  
+}
+.initialJoin
+{
+    font-size: 1.5em;
+    font-variant: small-caps;
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: 3px;
+}
+.joinedFinna
+{
+ margin-left: 11px;
+ font-size: 2em;
+ font-family: 'Asap', sans-serif;
+ 
+}
+.indent
+{
+    text-indent: 20px;
+}
+#biographyEdit
+{
+   opacity:0.1;
+}
+#biographyEdit:hover
+{
+   opacity:1;
+}
+.commentButton
+{
+    width:22px;
+    height:22px;
+    line-height:22px;
+    -moz-border-radius:50%; 
+    -webkit-border-radius:50%;
+    background:#FFF;
+    border-radius:50%;
+    margin:-3px 10px 0 10px;
+    cursor:pointer;
+}
+
+.numberOfComments
+{
+    display:block;
+    position:absolute;
+    background:#283e4a;
+    color:#FFF;
+    font-size:12px;
+    font-weight:normal;
+    padding:1px 6px;
+    margin:-8px 0 0 25px;
+    -moz-border-radius:3px; 
+    -webkit-border-radius:3px;
+    border-radius:10px;
+    z-index:1;
+}
+ /* Set the size of the div element that contains the map */
+      #map {
+        height: 0px;  /* The height is 400 pixels */
+        width: 0%;  /* The width is the width of the web page */
+        opacity:0;
+       }
+       #googleMapGeolocationForUsersToIdentifyWhereTheFuckToGo:hover
+       {
+           cursor: pointer;
+       }
+       #generalInformation:hover
+       {
+           cursor: pointer;
+       }

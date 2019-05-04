@@ -1,0 +1,92 @@
+<%include ../partials/header%>
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-md-12">
+          <h3 class="text-center">Welcome to Connections!</h3>
+          <form action="/users/<%=currentUser._id%>/link" method="POST">
+            <dl>
+            <dt>1. I see myself as extroverted, enthusiastic</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[first]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[first]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[first]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[first]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>2. I see myself as critical, quarrelsome</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[second]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[second]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[second]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[second]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>3. I see myself as dependable, self-disciplined</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[third]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[third]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[third]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[third]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>4. I see myself as anxious, easily upset</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[fourth]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[fourth]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[fourth]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[fourth]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>5. I see myself as open to new experiences, complex</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[fifth]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[fifth]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[fifth]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[fifth]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>6. I see myself as reserved, quiet</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[sixth]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[sixth]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[sixth]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[sixth]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>7. I see myself as sympathetic, warm.</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[seventh]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[seventh]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[seventh]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[seventh]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dl>
+            <dt>8. I see myself as disorganized, careless.</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[eight]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[eight]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[eight]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[eight]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dt>9. I see myself as calm, emotionally stable.</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[ninth]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[ninth]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[ninth]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[ninth]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+            <dt>10. I see myself as conventional, uncreative.</dt><br>
+                <dd><label for="1a"><input id="1a" name="personality[tenth]" type="radio" value="1" required> Disagree strongly</label><br>
+                    <label for="1b"><input id="1b" name="personality[tenth]" type="radio" value="2" required> Disagree a little</label><br>
+                    <label for="1c"><input id="1c" name="personality[tenth]" type="radio" value="3" required> Agree a little</label><br>
+                    <label for="1d"><input id="1d" name="personality[tenth]" type="radio" value="4" required> Agree strongly</label><br>
+                </dd>
+            </dl>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-success btn-inline">Submit</button>
+                </div>
+          </form>
+       </div>
+  </div>  
+</div>
+<%include ../partials/footer%>

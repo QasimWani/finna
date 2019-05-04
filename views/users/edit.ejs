@@ -1,0 +1,72 @@
+<% include ../partials/header %>
+
+<div class="mt-5 container">
+    <div class="row">
+        <div style="width: 72%; margin: 5px auto;">
+            <h1 class="text-center mb-3">Edit your Profile</h1>
+<form action="/users/<%= user[0].username %>/settings?_method=PUT" method="POST">
+<% if(!user[0].birthday) { %>
+    <p class='text-center lead'>Since You signed up with your Google Account, we need some basic information to keep your account safe</p>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar-day"></i></span>
+            </div>
+            <input type="date" autocomplete="off"placeholder="your birthday..."class="text-center form-control" name="user[birthday]">
+        </div>
+<% } %>
+<% if(!user[0].sex) { %>
+<div style="font-size:1.5em;"class="text-center container mt-3 mb-3">
+<span class="gender align-items-center justify-content-center">
+    <input type="radio" required name="user[sex]" value="male">
+    <label for="male">Male</label>
+    </span>
+    <span class="gender ml-md-5 ml-sm-3">
+    <input type="radio" required name="user[sex]" value="female">
+    <label for="female">Female</label>
+</span>
+</div>
+<% } %>
+        <% if(!user[0].university) { %>
+                <div class="form-group">
+                    <input type="text" class="text-center form-control" name="user[university]" placeholder="Name of your University" autocomplete="off">
+                </div>
+        <% } %>
+        <% if(!user[0].classOf) { %>
+                <div class="form-group">
+                    <input id="classOfYear" type="text" class="text-center form-control" name="user[classOf]" placeholder="your graduation year..." autocomplete="off">
+                </div>
+        <% } %>
+        <% if(!user[0].collegeMajor) { %>
+                <div class="form-group">
+                    <input type="text" class="text-center form-control" name="user[collegeMajor]" placeholder="your major in college..." autocomplete="off">
+                </div>
+        <% } %>
+        <% if(user[0].profilePicture) { %>
+                    <div class="text-center">
+                      <p class="lead">Your current profile picture</p>
+                        <img class="mt-4 mb-4 rounded img-fluid" width="50%"src="<%=user[0].profilePicture.replace("/s50/","/")%>">
+                    </div>
+        <% } %>
+        <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-link"></i></span>
+                    </div>
+                    <input type="text" autocomplete="off"placeholder="your profile picture link..."class="text-center form-control" value="<%=user[0].profilePicture%>"name="user[profilePicture]">
+        </div>
+        <br><br><br>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Update my Profile!</button>
+                </div>
+            </form>
+            <a href="/users/<%=user[0].username%>">Go Back</a>
+        </div>
+    </div>
+</div>
+<script>
+$("#classOfYear").datepicker({
+format: "yyyy",
+viewMode: "years", 
+minViewMode: "years"
+});
+</script>
+<% include ../partials/footer %>

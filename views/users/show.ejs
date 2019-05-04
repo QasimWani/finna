@@ -1,0 +1,318 @@
+<%include ../partials/header%>
+
+    <div class="row">
+        <div class="col-lg-3">
+          <div class="container">
+              <br><br><br><br>
+              <div class="text-center">
+                  <p id="user"style="font-size:2em;font-weight:400;" class="display-4"><%=user[0].firstName%> <%=user[0].lastName%></p>
+              <p style="font-size:1.6em; opacity:0.55;" class="display-4">@<em><%=user[0].username%></em></p>
+<% if((!user[0].biography || user[0].biography < 1) &&  user[0].username === currentUser.username) { %>
+    <div class="text-center form-group">
+            <label class="display-4" for="biography"></label>
+      <form id="bioForm" method = "post" action = "/users/<%=currentUser.username%>?_method=PUT">
+            <textarea maxlength="169"required class="ml-2 form-control"name ="biography" id="bioEditing" placeholder="add short bio here..."></textarea>
+      </form>
+    </div>
+<% } else { %>
+<br>
+<div class="container mb-3 text-center">
+<span style="color:#14171a;"><%=user[0].biography%></span>
+    <% if(currentUser.username === user[0].username) { %>
+        <a href="#"data-toggle="modal" data-target="#editBio"><i id="biographyEdit" class="ml-1 fas fa-edit"></i></a>
+    <% } %>
+</div>
+<% } %>
+        <p id="finNumPost" style="font-size:1.7rem;" class="mt-3 lead"></p>   
+        <p id="finNumImg" class="lead"></p>
+<% var numberOfPosts = 0 %>
+<% var numberOfImages = 0 %>
+<% var totalImages = 0 %>
+            <% post.reverse().forEach(function(posts) { %>
+                <% if(user[0].username === posts.author.username) { %>
+                <% numberOfPosts++ %>
+                <% if(posts.image) { %>
+                <% numberOfImages++;%>
+<div class="modal fade" id="modal<%=numberOfImages%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="lead modal-title" id="postTitleForPaginationImages"><a style="font-weight:bold; margin-right:3px;font-color:#1DA1F2; text-decoration:none;"href="feed/<%=posts.id%>"> <%=posts.title%> </a></span>
+        <span style="margin-left:3px;padding-top:4px;"> <i class="mr-1 fas fa-clock"></i> <%=posts.created.toDateString()%></span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="finalPaginatedImage img-fluid" style="height:45vh;" width="100%"src='<%=posts.image%>'>
+        <p class="mt-3 mb-0 text-center lead"><%=posts.description.split(".")[0]%> ...</p>
+      </div> 
+      <div class="modal-footer">
+      <% if(numberOfImages-1 ==0) { %>
+      <a data-toggle="modal" aria-disabled="true" href="#modal<%=numberOfImages-1%>" style="margin-right:60%" class="postImages btn btn-secondary"><i class="mr-1 fas fa-times"></i> Latest</a>
+      <% } else { %>
+      <a data-dismiss="modal" data-toggle="modal" href="#modal<%=numberOfImages-1%>" style="margin-right:60%" class="postImages btn btn-danger"><i class="fas fa-arrow-left"></i> Newer</a>
+      <% } %>
+        <a data-dismiss="modal" data-toggle="modal" href="#modal<%=numberOfImages+1%>"   class="postImages btn btn-primary">Older <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>                 
+                <% if(numberOfImages<=4) { %>
+                   <div>
+                        <img  data-toggle="modal" type="picture" data-target="#modal<%=numberOfImages%>" class="paginatedImages img-fluid rounded"  style="height:15vh;width:47%;margin-bottom:3%;margin-left:3%; float:left;" src="<%=posts.image%>">
+                   </div>
+                <% } %>
+                    
+                <% } %>
+            <% } %>
+            <% }) %>
+                  <p id="numPost"class="mb-5 d-none"><%=numberOfPosts%></p>
+                  <p id="numImg"class="mb-5 d-none"><%=numberOfImages%></p>
+    
+              </div>
+              
+              <br>
+              <% if(numberOfImages === 1) {%>
+              <br><br><br><br>
+              <% } %>
+              <% if(numberOfImages === 3) { %>
+              <br><br><br><br><br><br><br><br><br>
+              <% } %>
+              <div class="container">
+                  <p style="font-size:1.8rem; color:#1DA1F2;"class="ml-3 lead">Joined : <span style="font-size:1.3rem;opacity:0.6;"><i class="fas fa-calendar-alt"></i> <%=user[0].created.toDateString().substring(4, 7)%>, <%=user[0].created.toDateString().substring(7)%></span></p>
+              </div>
+          </div>  
+        </div>
+        <div class="col-lg-5">
+            
+        <% if(user[0].username === currentUser.username) {%>
+        <div class="ml-4">
+                <div class="form-group">
+                    <div class="mt-4 mb-3 input-group">
+                    <div class="input-group-prepend">
+                      <% if(currentUser.profilePicture) { %>
+                    <span><img style="border-radius: 25px;width:53px;height:53px;" data-toggle="modal" type="picture" data-target="#profilePictureModal" class="mr-2" src="<%=currentUser.profilePicture%>"></span>
+                    <% } else { %>
+                      <% if(currentUser.sex === 'male') { %>
+                    <span><img style="border-radius: 25px;" class="mr-2" data-toggle="modal" type="picture" data-target="#profilePictureModal" height="50px" width="50px"src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png"></span>
+                     <% } else { %>
+                    <span><img style="border-radius: 25px;"data-toggle="modal" type="picture" data-target="#profilePictureModal" class="mr-2" height="50px" width="50px" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></span>
+                      <% } %>
+                    <% } %>
+                    </div>
+                    <input maxlength='0'style="border-radius: 25px;" autocomplete="off" placeholder="<%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, what are you finna do?"  data-toggle="modal" type="text" data-target="#postFromProfile" name ="title" type="text"class="form-control" required>
+                    </div>
+                    </div>
+            </div>
+<% } %>
+
+        <div class="mt-3">
+            <% post.forEach(function(posts) { %>
+                <% if(user[0].username === posts.author.username) { %>
+<div class="posts rounded">
+<% if(!posts.author.profilePicture) { %>
+  <% if(posts.author.sex === 'male') { %>
+<img style="border-radius: 55px;" class="m-3" data-toggle="modal" type="picture" data-target="#profilePictureModal" src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png" alt="Profile Image" width="90" height="90" align="left">
+  <% } else { %>
+     <img style="border-radius: 55px;" data-toggle="modal" type="picture" data-target="#profilePictureModal" class="m-3" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png" alt="Profile Image" width="90" height="90" align="left">
+<% } %>
+<% } else { %>
+    <% if(posts.author.profilePicture.includes("/s50/")) {%>
+    <% var profile = posts.author.profilePicture.replace("/s50/","/");%>
+         <img style="border-radius: 55px;" data-toggle="modal" type="picture" data-target="#profilePictureModal" class="mb-5 mt-2 mr-4 ml-3" src="<%=profile%>" alt="Profile Image" width="70" height="70" align="left">
+    <% } else { %>
+         <img style="border-radius: 55px;width:53px;height:53px;" data-toggle="modal" type="picture" data-target="#profilePictureModal" class="m-3" src="<%=posts.author.profilePicture%>" alt="Profile Image" width="70" height="70" align="left">
+    <% } %>
+<% } %>
+      <div class="pt-3"><p><a class="nameImageProfileShow" href="/users/<%=posts.author.username%>" ><strong><%=posts.author.firstName%></a> </strong><span style="color:#1DA1F2">@<%=posts.author.username%> </span>&#9684; <%= posts.created.toDateString() %></p></div>
+        <div class="container">
+           <p class="display-4 titlePost"><a class="postlink" href="/feed/<%= posts._id %>" ><strong><%=posts.title%></strong></p></a>
+           <div class="container">
+             <p class="lead ml-4"><%-posts.description.substring(0,195)%> <span class="blurredOut"><%-posts.description.substring(195, 400)%> . . .</span>
+             </p>
+          </div>
+          <div class="text-center container">
+             <img class="img-fluid" width="100%"style="object-fit:cover;"src="<%=posts.image%>">
+          </div>
+        <br><br>
+      </div>
+    </div>
+    <br>
+                <% } %> 
+            <% }) %>
+            <% if(numberOfPosts > 0) { %>
+            <br><br>
+            <div class="mt-5 mb-5 text-center">
+                <i style="font-size:2.7rem;" class="fas fa-spinner"></i>
+            </div>
+            <% } %>
+                <div class="text-center bg-white mt-5">
+                    
+                    <p> <span class="initialJoin"><%=user[0].firstName%> <%=user[0].lastName%></span><span class="joinedFinna">joins <span style="color:#1DA1F2;letter-spacing:3px;font-size:1.3em;">FINNA</span></span></p>
+            <p style="font-size:1.3rem;opacity:0.6;"><i class="fas fa-calendar-alt"></i> <%=user[0].created.toDateString().substring(4, 7)%>, <%=user[0].created.toDateString().substring(7)%></p>
+                    <% if(user[0].profilePicture) { %>
+                    <img class="img-fluid p-1" width="100%"  src="<%=user[0].profilePicture.replace("/s50/","/")%>">
+                <% } else { %>
+                <% if(user[0].sex === 'male') { %>
+                    <img class="img-fluid p-1" width="100%" src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png">
+                <% } else {%>
+                    <img style="background-color: white;" width="100%"  class="img-fluid p-1" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png">
+                    <% } %>
+                <% } %>
+                    
+                </div>
+        </div><br><br>
+        </div>
+                    
+        <div class="col-lg-1"></div>
+
+<div class="d-lg-block d-none col-lg-3">
+      <div class="container">
+          <br>
+        <% if(event.length>0) { %>
+  <% if(user[0].username == currentUser.username) { %>
+            <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;">Your Events</p>
+            <% } else{ %>
+            <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;"><%=user[0].firstName%>'s Events</p>
+        <% } %>
+        <% } %>
+        <% event.forEach(function(allEvents){ %>
+           <div class="card rounded">
+              <div class="card-body">
+                <h5 class="card-title"><%=allEvents.title%></h5>
+                <img class="img-fluid" src="<%=allEvents.image%>">
+                <p class="lead card-text"><strong>When</strong> : <span><%=allEvents.date%></span></p>
+                <hr>
+                <p class="lead"style="font-size:1.2em;"><strong>Location</strong>: <a style="color:black;"href="https://www.google.com/maps/place/<%=allEvents.location%>" id="locationForGMaps"><%=allEvents.location%></a> </p>
+                
+                <% if(allEvents.comments.length>0) { %>
+  <hr style="border:solid 0.4px grey;">
+        <div class="row">
+          <div class="col-10"></div>
+          <div class="col-xs-2">
+          <div class="text-right">
+              <a href="/events/<%=allEvents._id%>"><span class="numberOfComments"><%=allEvents.comments.length%></span></a>
+              <i id="commentButton"style="font-size:1.4rem;"class="far fa-comments"></i>
+          </div>
+              
+          </div>
+        </div>
+<% } %>
+        <br>
+                
+                <a href="/events/<%=allEvents.id%>" class="btn btn-primary">More Information</a>
+              </div>
+            </div>
+            <br>
+<% }) %>
+</div>
+        </div>
+</div>
+
+<div class="modal fade" id="postFromProfile" tabindex="-1" role="dialog" aria-labelledby="userPost" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="userPost"><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;width:53px;height:53px;"src="<%=currentUser.profilePicture%>"></a> <%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, <span class="lead"> whatcha' thinkin'?</span></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="form-group">
+            <label class="display-4" for="title">Title</label>
+      <form method = "post" action = "/users/<%=currentUser.username%>">
+            <input autocomplete="off" placeholder="add title here..." type="text" name ="title" class="form-control" id="usr" required>
+          </div>
+      <div class="form-group">
+        <label class="display-4" for="content">Content</label>
+        <textarea class="form-control" rows="5" name ="description" id="comment" required placeholder="add content here..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="lead" for="image">Image</label>
+          <input autocomplete="off" placeholder="insert image link... " type="text" name ="image" class="form-control" id="image">
+      </div>
+  <button class="btn btn-primary mb-0 btn-lg">Add Post</button>
+  </form>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<div class="modal fade" id="profilePictureModal" tabindex="-1" role="dialog" aria-labelledby="userProfilePicture" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-body p-1">
+            <div class="text-center">
+                <% if(user[0].profilePicture) { %>
+                    <img class="img-fluid" src="<%=user[0].profilePicture.replace("/s50/","/")%>">
+                <% } else { %>
+                <% if(user[0].sex === 'male') { %>
+                    <img class="img-fluid" src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png">
+                <% } else {%>
+                    <img style="background-color: white;" class="img-fluid" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png">
+                    <% } %>
+                <% } %>
+            </div>
+    </div>
+  </div>
+</div>  
+</div>
+
+<!--MODAL FOR EDITING A USER'S BIO-->
+<div class="modal fade" id="editBio" tabindex="-1" role="dialog" aria-labelledby="modalToEditBiography" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit your Biography</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+              <div class="modal-body">
+                 <div class="text-center form-group">
+                    <label class="display-4" for="editingBio"></label>
+              <form method = "post" action = "/users/<%=currentUser.username%>?_method=PUT">
+                    <textarea maxlength="169" class="form-control"rows="3"name ="biography" id="editingBio" placeholder="add short bio here..."><%=user[0].biography%></textarea>
+                    <a href="/users/<%=user[0].username%>"style="color:white;margin-left:60%;"class="btn mt-2 mr-3 btn-sm btn-secondary">Cancel</a>
+                    <button class="btn mt-2 btn-sm btn-primary">Save</button>
+              </form>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%include ../partials/footer%>
+<script>
+    document.title = document.getElementById("user").textContent + " | Finna";
+    var numberOfPosts = document.getElementById("numPost").textContent;
+    console.log(numberOfPosts);
+    var numberOfImages = document.getElementById("numImg").textContent;
+    console.log(numberOfImages);
+    if(numberOfImages==1)
+    {
+     document.getElementById("finNumImg").textContent = numberOfImages + " Image";
+    }
+    else if(numberOfImages >= 2)
+    {
+     document.getElementById("finNumImg").textContent = numberOfImages + " Images";
+    }
+    
+    if(numberOfPosts==1)
+    {
+    document.getElementById("finNumPost").textContent = numberOfPosts + " Post";
+    }else if(numberOfPosts >= 2)
+    {
+    document.getElementById("finNumPost").textContent = numberOfPosts + " Posts";
+    }
+    
+$(document).ready(function(){
+    $('#bioEditing').keypress(function(e){
+      if(e.which == 13){
+           $('#bioForm').submit();
+       }
+    });
+});
+</script>
