@@ -50,7 +50,9 @@ passport.deserializeUser((id, done) =>{
     done(null, user);  
   }); 
 });
-mongoose.connect("mongodb://localhost/finna",{ useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/finna",{ useNewUrlParser: true });
+mongoose.connect("mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna",{ useNewUrlParser: true });
+
 //mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna
 //requiring the routes
 var commentRoutes    = require("./routes/comments"),
@@ -89,7 +91,7 @@ app.get("*", middleware.bogusURL, function(req, res){
 }); 
 
 
-app.listen(4000, process.env.IP, function(){
+app.listen(process.env.PORT || 4000, process.env.IP, function(){
 // const from = '12018770079'
 // const to = '15409985673',
 // const text = 'A text message sent using the Nexmo SMS API'
