@@ -51,6 +51,7 @@ passport.deserializeUser((id, done) =>{
   }); 
 });
 mongoose.connect("mongodb://localhost/finna",{ useNewUrlParser: true });
+//mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna
 //requiring the routes
 var commentRoutes    = require("./routes/comments"),
     postRoutes = require("./routes/posts"),
