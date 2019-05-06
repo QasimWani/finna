@@ -2,6 +2,7 @@ var Post = require("../models/posts");
 var Comment = require("../models/comments");
 var User = require("../models/user");
 var Event = require("../models/events");
+var Startup = require("../models/startups");
 var EventComment = require("../models/eventcomments");
 //middleware
 var middlewareObj = {};
@@ -123,7 +124,37 @@ middlewareObj.checkEventOwnership = function(req, res, next){
     }
  })};
 
-middlewareObj.isLoggedIn = function(req, res, next){
+//middleware for checking ownership of the startup
+//middleware for checking whether a user has the right to edit or delete a HOUSE
+middlewareObj.checkStartupOwnership = function(req, res, next){
+    Startup.findById(req.params.id, function(err, foundStartup){
+        if(err || !foundStartup)
+        {
+          req.flash("error", "Startup not found");
+           return res.redirect("/startups");  
+        }
+        else if(req.isAuthenticated()){
+           Startup.findById(req.params.id, function(err, foundStartup){
+              if(err || !foundStartup){
+                  req.flash("error", "Startup not found");
+                  return res.redirect("/startups");
+              }  else {
+                  // does user own the campground?
+               if(foundStartup.author.id.equals(req.user._id)) {
+                   next();
+               } else {
+                   req.flash("error", "You don't have permission to do that");
+                   res.redirect("/startups/"+req.params.id);
+               }
+              }
+           });
+       } else {
+           req.flash("error", "You need to be logged in to do that");
+           res.redirect("/");
+       }
+})};   
+
+ middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated() || req.user)
     {
         return next();

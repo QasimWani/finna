@@ -41,7 +41,7 @@ router.use(methodOverride("_method"));
 //Post post request
 router.post("/new", middleware.isLoggedIn, function(req, res){
    
-    var startup = {
+   var startup = {
     title : req.body.startup_name,
     website : req.body.startup_website,
     keys : req.body.startup_keys,
@@ -86,7 +86,21 @@ router.post("/new", middleware.isLoggedIn, function(req, res){
    
 });
 
-
+router.get("/", middleware.isLoggedIn, function(req, res){
+   Startup.find({}, function(err, allStartups){
+      if(err)
+      {
+         console.log(err.message);
+         req.flash("error","Oops! Something went wrong! Try loading the page or coming back later...");
+         res.redirect("back");
+      }
+      else
+      {
+         console.log("User taken to All Startups Page!");
+         res.render("startups/index",{allStartups : allStartups});
+      }
+   });
+});
 //Detailed page review SHOW ROUTE
 router.get("/:id", middleware.isLoggedIn, function(req, res) {
     Startup.findById(req.params.id).populate("comments").exec(function(err, foundId){
@@ -136,46 +150,50 @@ router.get("/:id", middleware.isLoggedIn, function(req, res) {
 });
 
 // //Edit a PostHouse route
-// router.get("/:id/edit", middleware.checkPostOwnership, function(req, res) {
-//     Post.findById(req.params.id, function(err, foundId){
-//        if(err || !foundId){
-//           console.log("Something went wrong while handling id");
-//        }
-//        else
-//        {
-//              console.log("User taken to edit Post page");
+router.get("/:id/edit", middleware.checkStartupOwnership, function(req, res) {
+    Startup.findById(req.params.id, function(err, foundId){
+       if(err || !foundId){
+          console.log("Something went wrong while handling id");
+       }
+       else
+       {
+             console.log("User taken to edit Post page");
              
-//             res.render("posts/edit", {post : foundId});
-//        }
-//     });
-// });
-// //this is going to update the Post house
-// router.put("/:id", middleware.checkPostOwnership, function(req, res){
-//    Post.findByIdAndUpdate(req.params.id, req.body.post, function(err, updatedBlog){
-//       if(err){
-//           res.redirect("/feed");
-//       }  else {
-//          req.flash("info","Successfully edited " + req.body.post.title);
-//         console.log(req.body.post.title + " was edited!");
-//          res.redirect("/feed/" + req.params.id);
-//       }
-//    });
-// });
-// //deleting a Post
-// router.delete("/:id", middleware.checkPostOwnership, function(req, res){
-//     Post.findByIdAndRemove(req.params.id, function(err){
-//        if(err){
-//            console.log("Oops. Something went wrong while deleting a Post house...");
-//            res.redirect("/feed");
-//        } else {
-//           req.flash("info", "Successfully deleted your Post!");
-//            console.log("A Post house was deleted");
-//            res.redirect("/feed");
-//        }
-//    });
-// });
+            res.render("startups/edit", {startup : foundId});
+       }
+    });
+});
+//this is going to update the Startup
+router.put("/:id", middleware.checkStartupOwnership, function(req, res){
+   console.log(req.body.startup.title);
+   var startup = {startup:req.body.startup}
+   console.log(req.params.id);
+   Startup.findByIdAndUpdate(req.params.id, startup, function(err, updatedBlog){
+      if(err){
+          res.redirect("/startups");
+      }  else {
+         req.flash("info","Successfully edited " + req.body.startup.title);
+         console.log(updatedBlog);
+        console.log(req.body.startup.title + " was edited!");
+         res.redirect("/startups/" + req.params.id);
+      }
+   });
+});
+//deleting a Startup
+router.delete("/:id", middleware.checkStartupOwnership, function(req, res){
+    Startup.findByIdAndRemove(req.params.id, function(err){
+       if(err){
+           console.log("Oops. Something went wrong while deleting a Startup...");
+           res.redirect("/startups");
+       } else {
+          req.flash("info", "Successfully deleted your Startup!");
+           console.log("A STARTUP was deleted");
+           res.redirect("/startups");
+       }
+   });
+});
 
-// router.get("*", middleware.bogusURL, function(req, res){
-// });  
+router.get("*", middleware.bogusURL, function(req, res){
+});  
 
 module.exports = router;

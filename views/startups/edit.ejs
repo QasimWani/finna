@@ -1,0 +1,89 @@
+<% include ../partials/header %>
+
+<div class="mt-5 container">
+    <div class="row">
+        <div style="width: 72%;margin: 5px auto;">
+            <h1 style="color:#000; letter-spacing:13px;" id="startupName" class="text-center mb-3"><%= startup.startup.title.toUpperCase() %></h1>
+            
+            <form action="/startups/<%= startup._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input type="text" id="futureStartupName" class="text-center form-control" name="startup[title]" placeholder="title of your Startup..." autocomplete="off" value="<%= startup.startup.title %>" required>
+                </div>
+
+                <div class="form-group">
+                <p style="font-size:1.7em; font-family: 'Asap', sans-serif; color:#4AB3F4" class="lead text-center">Mission Statement</p>
+                    <textarea class="form-control border-info " rows="4" name="startup[mission]" placeholder="Mission statement of your Startup..."><%= startup.startup.mission%></textarea> 
+                </div>
+                
+
+                <div class="form-group">
+                    <p style="font-size:1.7em; font-family: 'Asap', sans-serif; color:#4AB3F4" class="lead text-center">Key Ingredients</p>
+                    <textarea class="form-control border-info " rows="3" cols="9"name="startup[keys]" placeholder="Key areas of your Startup..."><%= startup.startup.keys%></textarea> 
+                </div>
+                
+                <div class="form-group">
+                <p style="font-size:1.7em; font-family: 'Asap', sans-serif; color:#4AB3F4" class="lead text-center">What industry is <span style="color: black;"id="induStartup"><%=startup.startup.title%></span> located in?</p>
+
+                    <input type="text" class="text-center form-control" name="startup[industry]" placeholder="Industry of your Startup..." autocomplete="off" value="<%= startup.startup.industry %>" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="text-center form-control" name="startup[location]" placeholder="Location of your Startup..." autocomplete="off" value="<%= startup.startup.location %>" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-external-link-square-alt"></i></span>
+                    </div>
+                    <input type="text" autocomplete="off"placeholder="(required) website url..."required class="text-center form-control" name="startup[website]" value="<%= startup.startup.website %>">
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-link"></i></span>
+                    </div>
+                    <input type="text" autocomplete="off"placeholder="(required) image url..."required class="text-center form-control" name="startup[image]" value="<%= startup.startup.image %>">
+                </div>
+                    <div class="text-center">
+                        <img class="mt-4 mb-4 rounded img-fluid" width="50%"src="<%=startup.startup.image%>">
+                    </div>
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fab fa-youtube"></i></span>
+                    </div>
+                    <input type="text" autocomplete="off"required placeholder="(required) video url..."class="text-center form-control" name="startup[video]" value="<%= startup.startup.video %>">
+                </div>
+                <br><hr>
+                    <iframe src="https://www.youtube.com/embed/<%=startup.startup.video.split('?v=')[1]%>?modestbranding=1&showinfo=0&rel=0&cc_load_policy=1&iv_load_policy=3&theme=light&fs=0&color=white&autohide=0&controls=0&disablekb=1"width="100%" height="500"frameborder="0"></iframe>
+                <br>
+                <hr><br>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Update my Startup!</button>
+                </div>
+            </form>
+            <span hidden id="blah"><%=startup.startup.title%></span>
+            <a href="/startups/<%=startup.id%>">Go Back</a>
+        </div>
+    </div>
+</div>
+<script>
+const x = document.getElementById("blah").textContent;
+var ftStartupName = $("#futureStartupName");
+var induStartup = document.getElementById("induStartup");
+var startupName = document.getElementById("startupName");
+ftStartupName.keyup(function(){
+    if(ftStartupName.val().length>0 && ftStartupName.val() !== " ")
+    {
+        startupName.textContent = ftStartupName.val().toUpperCase();
+        induStartup.textContent = ftStartupName.val();
+    }
+    else
+    {
+       startupName.textContent = x.toUpperCase();
+       induStartup.textContent = x;
+    }
+        
+})
+</script>
+<% include ../partials/footer %>

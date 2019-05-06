@@ -35,8 +35,8 @@
     <span class="ml-1 dropdown">
       <button class="btn btn-xs btn-light" type="button" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></button>
           <ul class="dropdown-menu p-2 bg-light">
-             <a class="btn btn-md btn-warning"href="/feed/<%=post._id%>/edit">Edit</a>
-   <form class="delete-form" action="/feed/<%= post._id %>?_method=DELETE" method="POST">
+             <a class="btn btn-md btn-warning"href="/startups/<%=post._id%>/edit">Edit</a>
+   <form class="delete-form" action="/startups/<%= post._id %>?_method=DELETE" method="POST">
         <button style="float:right;"class="btn btn-md btn-danger">Delete</button>
    </form>
           </ul>
@@ -65,6 +65,9 @@
 
 <div style="border-radius:10px;"class="bg-white">
 <hr>
+</div>
+<a style="font-size:1.2em; color:#1DA1F2;"href="/startups">View all startups</a>
+<br><br><br>
 <%include ../partials/footer%>
 <script>
     document.getElementById("date").value = (moment().format('MMMM Do YYYY, h:mm a'));

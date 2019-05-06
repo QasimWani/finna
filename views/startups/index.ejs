@@ -1,0 +1,123 @@
+<%include ../partials/header%>
+<br>
+<style>
+.modal { 
+   background-color: rgba(184,184,184,0.729); 
+}
+</style>
+<div class="container mt-2">
+<div class="form-group">
+        <div style="margin-left:25%;width:50%" class="mt-4 mb-3 input-group">
+        <div class="input-group-prepend">
+          <% if(currentUser.profilePicture) { %>
+        <span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px; width:53px;height:53px;" class="mr-2" src="<%=currentUser.profilePicture%>"></a></span>
+        <% } else { %>
+          <% if(currentUser.sex === 'male') { %>
+        <span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px"src="http://www.perceptualdynamics.be/wp-content/uploads/photo-gallery/imported_from_media_libray//thumb/profile_icon%20(15).png"></a></span>
+         <% } else { %>
+        <span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
+          <% } %>
+        <% } %>
+        </div>
+        <input maxlength='0'style="border-radius: 25px;" autocomplete="off" placeholder="<%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, what startup are you planning to create?"  data-toggle="modal" type="text" data-target="#launchEvent" type="text"class="form-control" required>
+        </div>
+</div>
+<br>
+    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<% allStartups.forEach(function(allStartups){ %>
+        <div class="mb-5 col-lg-4 col-md-m-3 col-sm-6 col-xs-12">
+           <div class="card" style="border-radius:5%;">
+              <div class="card-body">
+                <h5 class="card-title"><%=allStartups.startup.title%></h5>
+                <img class="eventImages img-fluid" src="<%=allStartups.startup.image%>">
+                <p class="lead card-text"><span><%=allStartups.startup.mission.substring(0,60)%>...</span></p>
+                <hr>
+                <p class="lead card-text"><span><%=allStartups.startup.industry %></span></p>
+                <hr>
+                <p class="lead"style="font-size:1.2em;"><strong>POC</strong>:  <span><%=allStartups.author.firstName%> <%=allStartups.author.lastName%> <em><a href="/users/<%=allStartups.author.username%>"><span style="color:grey;">@<%=allStartups.author.username%></span></a></em></span></p>
+            
+
+              
+                
+                <a href="/startups/<%=allStartups.id%>" class="btn btn-primary">More Information</a>
+              </div>
+            </div> 
+        </div>
+<% }) %>
+    </div>
+</div>
+
+
+<!--MODAL FOR EVENTS-->
+ <div class="modal fade" id="launchEvent" tabindex="-1" role="dialog" aria-labelledby="userPost" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h4 class="modal-title" id="eventPost"><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;width:53px;"src="<%=currentUser.profilePicture%>"></a> <%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %>, <span class="lead"> what are you planning to build?</span></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="form-group">
+        <form method="POST" action="/startups/new">
+            <div class="container text-center">
+                <div class="rounded">
+                    <div>
+                        <p class="card-title lead"><span style="font-size:1.3rem;">Startup Name</span>
+                            <input name="startup_name" required style="margin-top:6px;font-size:0.9rem;"class="form-control"  placeholder="e.g.: Finna">
+                        </p>
+                        <hr>
+                        <p class="card-title lead">Mission Statement
+                            <textarea name="startup_mission" required  style="margin-top:6px;font-size:0.9rem;" class="form-control" rows=6 placeholder="e.g.: Finna hopes to be the largest public database for self-driven entrepreneurs and developers"></textarea>
+                        </p>
+                        <hr>
+                        <p class="card-title lead">Ingredients<br>
+                            <span style="font-size:0.81rem;">Keywords to identify your startup</span>
+                            <textarea name="startup_keys" required  style="margin-top:6px;font-size:0.9rem;" class="form-control" rows=6 placeholder="e.g.: recommendation engine, connecting entrepreneurs, machine learning, big data..."></textarea>
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Industry</span>
+                            <input name="startup_industry" required style="font-size:0.9rem;margin-top:6px;"class="form-control" placeholder="e.g.: social networking">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Website</span>
+                            <input name="startup_website" required style="font-size:0.8rem;margin-top:6px;"class="form-control" placeholder="e.g.: https://finna.space">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Image Link</span>
+                            <input name="startup_image" required style="font-size:0.8rem;margin-top:6px;"class="form-control" placeholder="e.g.: https://pbs.twimg.com/media/D5y6FiDXsAAUogB.png:large">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Video Trailer</span>
+                            <input name="startup_video" required style="font-size:0.6rem;margin-top:6px;"class="form-control" placeholder="e.g.: https://www.youtube.com/watch?v=bVXt96lunHQ">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Location</span>
+                            <input name="startup_location" required style="font-size:0.9rem;margin-top:6px;"class="form-control" placeholder="e.g .: Blacksburg, Virginia, USA">
+                        </p>
+                    <hr>
+                    <button class="btn btn-primary btn-md">Add my startup</button>
+                    </div>
+                    </div>
+            </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%include ../partials/footer%>
+<script>
+  var images = document.getElementsByClassName("eventImages");
+  for(let i = 0; i < images.length; i++)
+  {
+
+      images[i].style.height  = "150px";
+      images[i].style.width  = "100%";
+  }
+</script>
