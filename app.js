@@ -50,8 +50,8 @@ passport.deserializeUser((id, done) =>{
     done(null, user);  
   }); 
 });
-// mongoose.connect("mongodb://localhost/finna",{ useNewUrlParser: true });
-mongoose.connect("mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna",{ useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/finna",{ useNewUrlParser: true });
+// mongoose.connect("mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna",{ useNewUrlParser: true });
 
 //mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna
 //requiring the routes
@@ -62,6 +62,7 @@ var commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index"),
     eventCommentRoutes  = require("./routes/eventcomments"),
     eventRoutes      = require("./routes/events");
+    startupRoutes    = require("./routes/startups");
     
 
 
@@ -80,6 +81,8 @@ app.use("/events/:id/comments", eventCommentRoutes);
 app.use("/feed", postRoutes);
 app.use("/users", userRoutes);
 app.use("/events", eventRoutes);
+app.use("/startups", startupRoutes);
+
 app.use("/", indexRoutes);
 
 app.get("/", function(req, res){

@@ -7,8 +7,8 @@
               <div class="text-center">
                   <p id="user"style="font-size:2em;font-weight:400;" class="display-4"><%=user[0].firstName%> <%=user[0].lastName%></p>
               <p style="font-size:1.6em; opacity:0.55;" class="display-4">@<em><%=user[0].username%></em></p>
-<% if((!user[0].biography || user[0].biography < 1) &&  user[0].username === currentUser.username) { %>
-    <div class="text-center form-group">
+        <% if((!user[0].biography || user[0].biography < 1) &&  user[0].username === currentUser.username) { %>
+     <div class="text-center form-group">
             <label class="display-4" for="biography"></label>
       <form id="bioForm" method = "post" action = "/users/<%=currentUser.username%>?_method=PUT">
             <textarea maxlength="169"required class="ml-2 form-control"name ="biography" id="bioEditing" placeholder="add short bio here..."></textarea>
@@ -80,9 +80,49 @@
               <br><br><br><br><br><br><br><br><br>
               <% } %>
               <div class="container">
+              <br>
                   <p style="font-size:1.8rem; color:#1DA1F2;"class="ml-3 lead">Joined : <span style="font-size:1.3rem;opacity:0.6;"><i class="fas fa-calendar-alt"></i> <%=user[0].created.toDateString().substring(4, 7)%>, <%=user[0].created.toDateString().substring(7)%></span></p>
+<div class="container">
+          <br>
+        <% if(event.length>0) { %>
+  <% if(user[0].username == currentUser.username) { %>
+            <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;">Your Events</p>
+            <% } else{ %>
+            <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;"><%=user[0].firstName%>'s Events</p>
+        <% } %>
+        <% } %>
+        <% event.forEach(function(allEvents){ %>
+           <div class="card rounded">
+              <div class="card-body">
+                <h5 class="card-title"><%=allEvents.title%></h5>
+                <img class="img-fluid" src="<%=allEvents.image%>">
+                <p class="lead card-text"><strong>When</strong> : <span><%=allEvents.date%></span></p>
+                <hr>
+                <p class="lead"style="font-size:1.2em;"><strong>Location</strong>: <a style="color:black;"href="https://www.google.com/maps/place/<%=allEvents.location%>" id="locationForGMaps"><%=allEvents.location%></a> </p>
+                
+                <% if(allEvents.comments.length>0) { %>
+  <hr style="border:solid 0.4px grey;">
+        <div class="row">
+          <div class="col-10"></div>
+          <div class="col-xs-2">
+          <div class="text-right">
+              <a href="/events/<%=allEvents._id%>"><span class="numberOfComments"><%=allEvents.comments.length%></span></a>
+              <i id="commentButton"style="font-size:1.4rem;"class="far fa-comments"></i>
+          </div>
+              
+          </div>
+        </div>
+<% } %>
+        <br>
+                
+                <a style="margin-left:15%;"href="/events/<%=allEvents.id%>" class="btn btn-primary">More Information</a>
               </div>
-          </div>  
+            </div>
+            <br>
+<% }) %>
+</div>          
+    </div>        
+    </div>  
         </div>
         <div class="col-lg-5">
             
@@ -168,46 +208,83 @@
         <div class="col-lg-1"></div>
 
 <div class="d-lg-block d-none col-lg-3">
-      <div class="container">
+    <% if(currentUser.username == user[0].username) { %>
+    <div class="container text-center pt-3">
+      <button onclick="loadStartupInformation()" class="btn btn-success btn-lg">Add Startup</button>
+        <br><br>
+        <div id="startupFormLocator" class="op-amp">
+        <form method="POST" action="/startups/new">
+            <div class="container text-center">
+                <div class="card rounded">
+                    <div class="card-body">
+                        <p class="card-title lead"><span style="font-size:1.3rem;">Startup Name</span>
+                            <input name="startup_name" required style="margin-top:6px;font-size:0.9rem;"class="form-control"  placeholder="e.g.: Finna">
+                        </p>
+                        <hr>
+                        <p class="card-title lead">Mission Statement
+                            <textarea name="startup_mission" required  style="margin-top:6px;font-size:0.9rem;" class="form-control" rows=6 placeholder="e.g.: Finna hopes to be the largest public database for self-driven entrepreneurs and developers"></textarea>
+                        </p>
+                        <hr>
+                        <p class="card-title lead">Ingredients<br>
+                            <span style="font-size:0.81rem;">Keywords to identify your startup</span>
+                            <textarea name="startup_keys" required  style="margin-top:6px;font-size:0.9rem;" class="form-control" rows=6 placeholder="e.g.: recommendation engine, connecting entrepreneurs, machine learning, big data..."></textarea>
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Industry</span>
+                            <input name="startup_industry" required style="font-size:0.9rem;margin-top:6px;"class="form-control" placeholder="e.g.: social networking">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Website</span>
+                            <input name="startup_website" required style="font-size:0.8rem;margin-top:6px;"class="form-control" placeholder="e.g.: https://finna.space">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Image Link</span>
+                            <input name="startup_image" required style="font-size:0.8rem;margin-top:6px;"class="form-control" placeholder="e.g.: https://pbs.twimg.com/media/D5y6FiDXsAAUogB.png:large">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Video Trailer</span>
+                            <input name="startup_video" required style="font-size:0.6rem;margin-top:6px;"class="form-control" placeholder="e.g.: https://www.youtube.com/watch?v=bVXt96lunHQ">
+                        </p>
+                        <hr>
+                        <p class="content-content lead">
+                            <span style="font-size:1.3rem;">Location</span>
+                            <input name="startup_location" required style="font-size:0.9rem;margin-top:6px;"class="form-control" placeholder="e.g .: Blacksburg, Virginia, USA">
+                        </p>
+                    <hr>
+                    <button class="btn btn-primary btn-md">Add my startup</button>
+                    </div>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <% } %>
+
+
+<div class="container text-center">
           <br>
-        <% if(event.length>0) { %>
-  <% if(user[0].username == currentUser.username) { %>
-            <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;">Your Events</p>
-            <% } else{ %>
-            <p class="display-4 text-center font-weight-bold" style="font-size:1.8rem;"><%=user[0].firstName%>'s Events</p>
-        <% } %>
-        <% } %>
-        <% event.forEach(function(allEvents){ %>
+        <% startup.reverse().forEach(function(allStartups){ %>
            <div class="card rounded">
               <div class="card-body">
-                <h5 class="card-title"><%=allEvents.title%></h5>
-                <img class="img-fluid" src="<%=allEvents.image%>">
-                <p class="lead card-text"><strong>When</strong> : <span><%=allEvents.date%></span></p>
+                <h3 style="font-size:2.3em;letter-spacing:5px;font-family:'Cabin', sans-serif;font-weight:500;" class="display-5 text-center card-title"><%=allStartups.startup.title%></h3>
+                <img class="img-fluid" src="<%=allStartups.startup.image%>">
                 <hr>
-                <p class="lead"style="font-size:1.2em;"><strong>Location</strong>: <a style="color:black;"href="https://www.google.com/maps/place/<%=allEvents.location%>" id="locationForGMaps"><%=allEvents.location%></a> </p>
-                
-                <% if(allEvents.comments.length>0) { %>
-  <hr style="border:solid 0.4px grey;">
-        <div class="row">
-          <div class="col-10"></div>
-          <div class="col-xs-2">
-          <div class="text-right">
-              <a href="/events/<%=allEvents._id%>"><span class="numberOfComments"><%=allEvents.comments.length%></span></a>
-              <i id="commentButton"style="font-size:1.4rem;"class="far fa-comments"></i>
-          </div>
-              
-          </div>
-        </div>
-<% } %>
+                <p class="lead"><%=allStartups.startup.mission.substring(0,90)%>...</p>
+                <hr>
+                <iframe src="https://www.youtube.com/embed/<%=allStartups.startup.video.split('?v=')[1]%>?modestbranding=1&showinfo=0&rel=0&cc_load_policy=1&iv_load_policy=3&theme=light&fs=0&color=white&autohide=0&controls=0&disablekb=1"width="300" height="215"frameborder="0"></iframe>
         <br>
+                <h3 style="font-size:0.96em;letter-spacing:5px;font-family:'Cabin', sans-serif;" class="mt-4 mb-4 lead text-center card-title">Location: <span style="color:grey;"><%=allStartups.startup.location%></span></h3>
                 
-                <a href="/events/<%=allEvents.id%>" class="btn btn-primary">More Information</a>
+                <a style="margin-left:15%;"href="/startups/<%=allStartups._id%>" class="btn btn-primary">Learn More</a>
               </div>
             </div>
             <br>
 <% }) %>
-</div>
-        </div>
+</div> 
 </div>
 
 <div class="modal fade" id="postFromProfile" tabindex="-1" role="dialog" aria-labelledby="userPost" aria-hidden="true">
@@ -316,3 +393,16 @@ $(document).ready(function(){
     });
 });
 </script>
+<script>
+ function loadStartupInformation()
+ {
+    $("#startupFormLocator").toggleClass("op-amp");
+ }
+</script>
+<style>
+.op-amp
+{
+display:none;
+animation: fade-in 1s;
+}
+</style>

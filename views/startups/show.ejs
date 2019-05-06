@@ -1,0 +1,75 @@
+<%include ../partials/header%>
+<style>
+.dropdown.commentDropdown
+{
+    opacity: 0;
+}
+.dropdown.commentDropdown:hover
+{
+   opacity: 1;  
+}
+
+
+</style>
+<div id="postTitle">
+<div class="container row">
+    <div class="col-lg-4 mb-4 col-sm-12">
+<span class="profileImage"><a data-toggle="modal" data-target="#launchPost" href="users/<%=post.author.username%>"><img class="col-sm-12 p-1 rounded float-left img-thumbnail img-responsive" src="<%=post.startup.image%>"></a></span>
+        
+        <p class="mb-3 d-none d-lg-block text-center" style="font-size: 1.6rem; letter-spacing:0.2rem;"><a style="color:black;" href="<%=post.startup.website%>"><%=post.startup.title%></a></p>
+            <div class=" d-none d-lg-block mb-3 text-center"><a href="/users/<%=post.author.username%>" style="opacity:0.55;" class="nameImageProfileShow"><em>@<%=post.author.username%></em></a>
+            </div>
+        <div>
+            <p class=" d-none d-lg-block lead text-center">Industry : <strong class="dateCreation"><%=post.startup.industry%></strong></p>
+        </div>
+        <div>
+            <p class=" d-none d-lg-block lead text-center">Location : <strong><%=post.startup.location%></strong></p>
+        </div>
+    </div>
+    <div class="col-lg-8 col-sm-12">
+        <div class="postBackground p-5 rounded">
+    <p class="display-3 mb-2 text-left"><span id="title"><%=post.startup.title%></span></p>
+    
+<span style="opacity:0.6;"class="lead"><i class="fas fa-clock"></i> <span class="dateCreation"><%=post.created.toDateString()%></span></span>
+    <% if(post.author.username === (currentUser.username)) { %>
+    <span class="ml-1 dropdown">
+      <button class="btn btn-xs btn-light" type="button" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></button>
+          <ul class="dropdown-menu p-2 bg-light">
+             <a class="btn btn-md btn-warning"href="/feed/<%=post._id%>/edit">Edit</a>
+   <form class="delete-form" action="/feed/<%= post._id %>?_method=DELETE" method="POST">
+        <button style="float:right;"class="btn btn-md btn-danger">Delete</button>
+   </form>
+          </ul>
+    </span>
+<% } %>
+<br>
+<hr>
+<br>
+    <iframe src="https://www.youtube.com/embed/<%=post.startup.video.split('?v=')[1]%>?modestbranding=1&showinfo=0&rel=0&cc_load_policy=1&iv_load_policy=3&theme=light&fs=0&color=white&autohide=0&controls=0&disablekb=1"width="600" height="500"frameborder="0"></iframe>
+
+    <% var fullPost = post.startup.mission.split("\r\n")%>
+    <p class="display-4">Our mission: </p>
+<% for(let i = 0; i < fullPost.length; i++) { %>
+    <p class="lead indent text-justified"><%=fullPost[i]%></p>
+<% } %>
+<% var allKeys = post.startup.keys.split(",")%>
+    <p class="display-4">Areas of expertise: </p>
+<% for(let i = 0; i < allKeys.length; i++) { %>
+    <p class="lead indent text-justified"><%=i+1%>. <%=allKeys[i]%></p>
+<% } %>
+    <div class="text-center">
+        <img class="img-fluid" width="100%"style="object-fit:cover;"src="<%=post.image%>">
+    </div>
+</div>
+<br>
+
+<div style="border-radius:10px;"class="bg-white">
+<hr>
+<%include ../partials/footer%>
+<script>
+    document.getElementById("date").value = (moment().format('MMMM Do YYYY, h:mm a'));
+</script>
+<script>
+let postName = document.getElementById("title").textContent;
+document.title = "Finna | " + postName;
+</script>

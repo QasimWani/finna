@@ -6,6 +6,7 @@ var express = require("express"),
     Personality = require("../models/personality"),
     middleware = require("../middleware"),
     Event      = require("../models/events"),
+    Startup    = require("../models/startups"),
     EventComment      = require("../models/eventcomments"),
     Comment      = require("../models/comments"),
     _          = require('underscore');
@@ -53,10 +54,21 @@ router.get("/:username",  middleware.isLoggedIn, function(req, res){
                         }
                         else
                         {
-                           console.log("This is post infomation about a particular user from user.js" + foundUser);
-                           res.render("users/show", {event: userEvents, user : foundId, post : foundUser});     
+                            Startup.find({"author.username": userId}, function(err, userStartups){
+                                if(err)
+                                {
+                                    console.log("THERE IS AN ERROR WHILE TRYING TO LOAD !!! STARTUPS !!! OF A USER IN HIS/HER PROFILE", err.message);
+                                    res.redirect("back");
+                                }
+                                else
+                                {
+                                   console.log("This is post infomation about a particular user from user.js" + foundUser);
+                                   res.render("users/show", {startup : userStartups, event: userEvents, user : foundId, post : foundUser});     
+                                }
+                            });
                         }
                     });
+                   
                     
                 }
                 else
