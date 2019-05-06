@@ -8,7 +8,7 @@ var express = require("express"),
 //Authentication Routes
 
 passport.use(new GoogleStrategy({
-    callbackURL : '/auth/google/redirect',
+    callbackURL : process.env.DB_callback+'auth/google/redirect',
     clientID : '630471424686-p1lot6h8f6jtp30esi04kb88jgngu4em.apps.googleusercontent.com',
     clientSecret : 'ByS0yOz8ZO5vBXD6BgfU3A3p',
     proxy        : true

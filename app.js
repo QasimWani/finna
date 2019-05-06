@@ -7,13 +7,17 @@ const express = require("express"),
       LocalStrategy = require("passport-local"),
       methodOverride    = require("method-override"),
       cookieSession     = require("cookie-session"),
+      dotenv        = require("dotenv"),
       User    = require("./models/user");
-const Nexmo = require('nexmo');
-const nexmo = new Nexmo({
-  apiKey: '4bae7a89',
-  apiSecret: 'tklSKztg8pF6dv3H'
-});
 
+
+      dotenv.config();
+
+// const Nexmo = require('nexmo');
+// const nexmo = new Nexmo({
+//   apiKey: '4bae7a89',
+//   apiSecret: 'tklSKztg8pF6dv3H'
+// });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
@@ -50,7 +54,7 @@ passport.deserializeUser((id, done) =>{
     done(null, user);  
   }); 
 });
-mongoose.connect("mongodb://localhost/finna",{ useNewUrlParser: true });
+mongoose.connect("mongodb://"+ process.env.DB_mong +"/finna",{ useNewUrlParser: true });
 // mongoose.connect("mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna",{ useNewUrlParser: true });
 
 //mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna
