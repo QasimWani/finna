@@ -107,7 +107,7 @@ router.get("/:id", middleware.isLoggedIn, function(req, res) {
                 Comment.find({nameOfPost: foundId.title}, function(err, foundEventComments){
                     if(err)
                     {
-                        console.log(err.message, "< YOU MORON! >");
+                        console.log(err.message, " < YOU MORON! >");
                         res.redirect("back");
                     }
                     else

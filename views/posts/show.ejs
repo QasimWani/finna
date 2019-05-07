@@ -16,16 +16,16 @@
     <div class="col-lg-3 mb-4 col-sm-12">
 <% if(!post.author.profilePicture) { %>
 <% if(post.author.sex === 'male') { %>
-<span class="profileImage"><a data-toggle="modal" data-target="#launchPost" href="users/<%=post.author.username%>"><img class="col-sm-12 p-1 rounded float-left img-thumbnail img-responsive" src="https://image.flaticon.com/icons/png/512/21/21294.png"></a></span>
+<span class="profileImage"><a href="users/<%=post.author.username%>"><img class="col-sm-12 p-1 rounded float-left img-thumbnail img-responsive" src="https://image.flaticon.com/icons/png/512/21/21294.png"></a></span>
  <% } else { %>
-<span class="profileImage"><a data-toggle="modal" data-target="#launchPost" href="users/<%=post.author.username%>"><img class="col-sm-12 p-1 rounded float-left img-thumbnail img-responsive" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
+<span class="profileImage"><a href="users/<%=post.author.username%>"><img class="col-sm-12 p-1 rounded float-left img-thumbnail img-responsive" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
   <% } %>
 <% } else { %>
     <% if(post.author.profilePicture.includes("/s50/")) {%>
     <% var profile = post.author.profilePicture.replace("/s50/","/");%>
-        <span  class="profileImage"><a data-toggle="modal" data-target="#launchPost" href="users/<%=post.author.username%>"><img src="<%=profile%>" class="col-sm-12 p-1 rounded float-left d-block img-thumbnail img-responsive" alt="Profile Image"></a></span>
+        <span  class="profileImage"><a href="users/<%=post.author.username%>"><img src="<%=profile%>" class="col-sm-12 p-1 rounded float-left d-block img-thumbnail img-responsive" alt="<%=user.firstName%> <%=user.lastName%>'s Profile Image"></a></span>
     <% } else { %>
-         <span style="width:53px;height:53px;" class="profileImage"><a data-toggle="modal" data-target="#launchPost" href="users/<%=post.author.username%>"><img src="<%=post.author.profilePicture%>" class="p-1 col-sm-12 rounded d-block float-left img-thumbnail img-responsive" alt="Profile Image"></a></span>
+         <span style="width:53px;height:53px;" class="profileImage"><a href="users/<%=post.author.username%>"><img src="<%=post.author.profilePicture%>" class="p-1 col-sm-12 rounded d-block float-left img-thumbnail img-responsive" alt="<%=user.firstName%> <%=user.lastName%>'s Profile Image"></a></span>
     <% } %>
 <% } %>
         
@@ -42,7 +42,7 @@
             </div>
         <div>
             <h4 class="lead font-italic text-center"><strong id="universityName"><%=user.university%></strong> <span id="universityClass">class of <%=user.classOf%></span></h4>
-            <h4 style="color:maroon;line-height:2.5"class="lead text-center"><strong><%=user.collegeMajor%></strong></h4>
+            <h4 style="color:#1DA1F2;line-height:2.5"class="lead text-center"><strong><%=user.collegeMajor%></strong></h4>
         </div>
         <div>
             <%let dateCreated = user.created.toDateString();%>
@@ -62,7 +62,7 @@
             </div>
         <div>
         <h4 class="lead font-italic text-center"><strong id="universityName"><%=user.university%></strong> <span id="universityClass">class of <%=user.classOf%></span></h4>
-        <h4 style="color:maroon;line-height:2.5"class="lead text-center"><strong><%=user.collegeMajor%></strong></h4>
+        <h4 style="color:#1DA1F2;line-height:2.5"class="lead text-center"><strong><%=user.collegeMajor%></strong></h4>
         </div>
         <div>
             <p class=" d-none d-lg-block lead text-center">Member Since : <strong class="dateCreation"><%=dateCreated.substring(4,dateCreated.length)%></strong></p>

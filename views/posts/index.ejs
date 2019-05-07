@@ -108,7 +108,7 @@
         <div class="container">
            <p class="display-4 titlePost"><a class="postlink" href="/feed/<%= posts._id %>" ><%=posts.title%></p></a>
            <div class="container">
-              <p class="lead ml-4 titlePost"><a class="postlink" href="/feed/<%= posts._id %>" ><%-posts.description.substring(0,195)%> <span class="blurredOut"><%-posts.description.substring(195, 400)%> . . .</span></p></a>
+              <p class="lead ml-4 titlePost"><a class="postlink abc" href="/feed/<%= posts._id %>" ><%-posts.description.substring(0,195)%> <span class="blurredOut"><%-posts.description.substring(195, 400)%> . . .</span></p></a>
           </div>
           <div class="text-center container">
              <img class="img-fluid rounded" style="object-fit:cover;"src="<%=posts.image%>">

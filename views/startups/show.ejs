@@ -63,15 +63,95 @@
 </div>
 <br>
 
+
+
+
+
+
+
+<!--Comments-->
 <div style="border-radius:10px;"class="bg-white">
-<hr>
+    <hr>
+<div class="container">
+    <% comments.forEach(function(comment){ %>
+        <div class="row">
+            <div class="col-sm-12">
+<% if(comment.author.profilePicture) { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;height:53px;width:53px;" class="mr-2" src="<%=comment.author.profilePicture%>"></a></span>
+<% } else { %>
+  <% if(comment.author.sex === 'male') { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px"src="https://image.flaticon.com/icons/png/512/21/21294.png"></a></span>
+ <% } else { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
+  <% } %>
+<% } %>                <a class="nameImageProfileShow"href="/users/<%= comment.author.username%>"><%= comment.author.firstName%> <%=comment.author.lastName%></a>
+                <span style="opacity:0.6;"class="ml-3 pull-right">
+                     <i class="far fa-calendar-alt"></i> <%= comment.time %>
+                </span>
+                <% if(comment.author.id == (currentUser.id)) {%>
+                 <span class="dropdown rounded-5 commentDropdown">
+                      <button class="btn btn-xs btn-light dropdown-toggle" type="button" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i>
+                      </button>
+                  <ul class="dropdown-menu p-2">
+                    <a class="btn btn-md btn-info" href="/startups/<%=post._id %>/comments/<%=comment._id %>/edit">Edit</a>
+                    <form class="delete-form" style="float:right;"action="/startups/<%=post._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-md btn-danger" value="Delete">
+                </form>
+                  </ul>
+                </span>
+                <% } %>
+                <p style="border-radius:25px;" class="bg-light ml-5 p-2"><%= comment.text %></p>
+                 
+            </div>
+        </div>
+    <% }) %>
+    
+        
+</div>
+</div>
+    <div class="text-right">
+        <form action="/startups/<%=post._id%>/comments" method="POST">
+                        <span class="form-group">
+                        
+                    </span>
+                <div class="mt-4 mb-3 input-group">
+                    <div class="input-group-prepend">
+<% if(currentUser.profilePicture) { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;height:53px;width:53px;" class="mr-2" src="<%=currentUser.profilePicture%>"></a></span>
+<% } else { %>
+  <% if(currentUser.sex === 'male') { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px"src="https://image.flaticon.com/icons/png/512/21/21294.png"></a></span>
+ <% } else { %>
+<span><a href="users/<%=currentUser.username%>"><img style="border-radius: 25px;" class="mr-2" height="50px" width="50px" src="https://cdn2.iconfinder.com/data/icons/person-gender-hairstyle-clothes-variations/48/Female-Side-comb-O-neck-512.png"></a></span>
+  <% } %>
+<% } %>
+</div>
+                    <input autocomplete="off" style="border-radius: 25px;" type="text"class="form-control" name="comment[text]" placeholder="add comment" minlength="1" required>
+                </div>
+                    <span class="form-group">
+                        <input id="date" type="hidden" class="form-control" name="comment[time]">
+                        <input id="date" type="hidden" class="form-control" name="comment[postTitle]" value="<%=post.startup.title%>">
+                </span>
+            </form>
+     
+
 </div>
 <a style="font-size:1.2em; color:#1DA1F2;"href="/startups">View all startups</a>
+
 <br><br><br>
-<%include ../partials/footer%>
 <script>
     document.getElementById("date").value = (moment().format('MMMM Do YYYY, h:mm a'));
 </script>
+
+
+
+
+
+
+
+
+<%include ../partials/footer%>
+
 <script>
 let postName = document.getElementById("title").textContent;
 document.title = "Finna | " + postName;

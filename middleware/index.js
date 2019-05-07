@@ -3,6 +3,7 @@ var Comment = require("../models/comments");
 var User = require("../models/user");
 var Event = require("../models/events");
 var Startup = require("../models/startups");
+var StartupComment = require("../models/startupcomments");
 var EventComment = require("../models/eventcomments");
 //middleware
 var middlewareObj = {};
@@ -153,6 +154,74 @@ middlewareObj.checkStartupOwnership = function(req, res, next){
            res.redirect("/");
        }
 })};   
+
+//middleware for checking whether a user has the right to edit or delete a comment
+//CHECKING FOR PERMISSIONS FOR editing or deleting a comment from the events page!
+middlewareObj.checkEventCommentOwnership = function(req, res, next){
+    Event.findById(req.params.id, function(err, foundPost){
+         if(err || !foundPost)
+         {
+           req.flash("error", "Post not found");
+           res.render("partials/errorPage");  
+         }
+    else if(req.isAuthenticated()){
+        EventComment.findById(req.params.comment_id, function(err, foundComment){
+           if(err || !foundComment || !foundPost){
+              req.flash("error", "Couldn't find the ID from the Database");
+               res.redirect("/events/"+req.params.id);
+           }  else {
+            if(foundComment.author.id.equals(req.user._id)) {
+                next();
+            } else {
+                req.flash("error", "You don't have the permission to do that.");
+                res.redirect("/events/"+ req.params.id);
+            }
+           }
+        });
+    } 
+    else 
+        {
+            req.flash("warning", "You need to be logged in first!");
+            res.redirect("/");
+        }
+    })};
+
+    
+
+//middleware for checking whether a user has the right to edit or delete a comment
+middlewareObj.checkStartupCommentOwnership = function(req, res, next){
+    Startup.findById(req.params.id, function(err, foundPost){
+         if(err || !foundPost)
+         {
+           req.flash("error", "Post not found");
+           res.render("partials/errorPage");  
+         }
+    else if(req.isAuthenticated()){
+        StartupComment.findById(req.params.comment_id, function(err, foundComment){
+           if(err || !foundComment || !foundPost){
+              req.flash("error", "Couldn't find the ID from the Database");
+               res.redirect("/startups/"+req.params.id);
+           }  else {
+            if(foundComment.author.id.equals(req.user._id)) {
+                next();
+            } else {
+                req.flash("error", "You don't have the permission to do that.");
+                res.redirect("/startups/"+ req.params.id);
+            }
+           }
+        });
+    } 
+    else 
+        {
+            req.flash("warning", "You need to be logged in first!");
+            res.redirect("/");
+        }
+    })};
+    
+
+
+
+
 
  middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated() || req.user)

@@ -24,6 +24,12 @@ var startupSchema = new mongoose.Schema({
       profilePicture : String,
       email : String,
       sex   : String
-   }
+   },
+   comments : [
+      {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "StartupComment"
+      }
+]
 });
 module.exports = mongoose.model("Startups", startupSchema);

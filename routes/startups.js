@@ -3,40 +3,12 @@ var express = require("express"),
     router  = express.Router(),
     // Post = require("../models/posts"),
     User = require("../models/user"),
-    Event = require("../models/events"),
+    Comment = require("../models/startupcomments"),
     Startup = require("../models/startups"),
     multer = require("multer"),
     middleware = require("../middleware");
 const upload = multer({'dest':'uploads/'});
-//Post get request
-// router.post("/startups/new", middleware.isLoggedIn, function(req, res){
-//      Startup.find({}).sort({created:-1}).exec(function(err, allPosts){
-//       if(err || !allPosts)
-//       {
-//          req.flash("error", "Couldn't load the posts... Try again");
-//          res.redirect("back");
-//       }
-//       else
-//       {
-//           console.log(req.user.username);
-//          Event.find({"author.username": req.user.username}, function(err, userEvents){
-//              if(err)
-//              {
-//                  console.log("Something went wrong!", err.message);
-//              }
-//              else
-//              {
-                
-//                 console.log("All Post displayed onto the website");
-//                 res.render("posts/index", {posts : allPosts, event : userEvents}); 
-//              }
-//          });
-         
-         
-//       }
-      
-//    });
-// });
+
 router.use(methodOverride("_method"));
 //Post post request
 router.post("/new", middleware.isLoggedIn, function(req, res){
@@ -106,6 +78,7 @@ router.get("/:id", middleware.isLoggedIn, function(req, res) {
     Startup.findById(req.params.id).populate("comments").exec(function(err, foundId){
        if(err || !foundId){
           req.flash("error", "Invalid URL.");
+          console.log(err);
           res.redirect("back");
        }
        else
@@ -127,10 +100,14 @@ router.get("/:id", middleware.isLoggedIn, function(req, res) {
                   }
                   else
                   {
-                    // console.log(allPosts.length);
+                    
+                  Comment.find({nameOfStartup: foundId.startup.title}, function(err, foundStartupComments){
+                     // console.log(allPosts.length);
                      var postUsers = 0, postArray = [];
+                     console.log("Start!!! ",foundId.startup.title,"<><><><> <-------------------   ----------->");
                      var currentEmail = foundId.author.email;
-                    for(var i = 0; i < allPosts.length; i++)
+                    console.log("THIS IS SPECIFIC POSTS <--->",foundStartupComments);
+                     for(var i = 0; i < allPosts.length; i++)
                     {
                         if(currentEmail === allPosts[i].author.email)
                         {
@@ -139,9 +116,14 @@ router.get("/:id", middleware.isLoggedIn, function(req, res) {
                           console.log(postUsers + " has posted : " + postArray.length);   
                         }
                     }
-                    console.log(postArray.length);
-                    res.render("startups/show", {post:foundId, user: userDeatils, count: postArray.length});
+                     console.log(postArray.length);
+                     console.log("****************************************");
+                     console.log(foundStartupComments);
+                     res.render("startups/show", {post:foundId, user: userDeatils, comments:foundStartupComments ,count: postArray.length});
+                  });
+                    
                   }
+                  
                });
              }
           });

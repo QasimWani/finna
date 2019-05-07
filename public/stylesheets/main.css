@@ -38,6 +38,12 @@ body
 {
     margin-left: 47px;
 }
+
+.postlink.abc:hover
+{
+    text-decoration: none !important;
+    color : #1DA1F2 !important;
+}
 .postlink:hover
 {
     text-decoration: none !important;
@@ -89,7 +95,7 @@ body
 .me
 {
     text-decoration: none !important;
-    color: maroon !important;
+    color: rgb(0, 128, 122) !important;
 }
 .me.contact
 {
@@ -128,13 +134,13 @@ a:nth-child(2)
 .nameImageProfileShow:hover
 {
     cursor: pointer;
-    color: maroon !important;
+    color: #1DA1F2 !important;
     text-decoration: none;
     
 }
 #universityClass
 {
-    color: maroon !important;
+    color: #1DA1F2 !important;
     font-weight: 500;
 }
 #universityName

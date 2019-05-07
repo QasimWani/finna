@@ -24,7 +24,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(methodOverride("_method"));
 app.use(cookieSession({
-    maxAge : 24*3600*1000,
+    maxAge : 36*3600*1000,
     keys   : ['rememberthenameqasimwanicuzhemakesai']
 }));
 //initialize passport
@@ -54,7 +54,7 @@ passport.deserializeUser((id, done) =>{
     done(null, user);  
   }); 
 });
-mongoose.connect("mongodb://"+ process.env.DB_mong +"/finna",{ useNewUrlParser: true });
+mongoose.connect("mongodb://"+process.env.DB_mong+"/finna",{ useNewUrlParser: true });
 // mongoose.connect("mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna",{ useNewUrlParser: true });
 
 //mongodb://qasim:InfinitumA1!@ds151486.mlab.com:51486/finna
@@ -67,6 +67,7 @@ var commentRoutes    = require("./routes/comments"),
     eventCommentRoutes  = require("./routes/eventcomments"),
     eventRoutes      = require("./routes/events");
     startupRoutes    = require("./routes/startups");
+    startupCommentRoutes = require("./routes/startupcomments");
     
 
 
@@ -82,11 +83,11 @@ app.use(function(req, res, next){
 
 app.use("/feed/:id/comments", commentRoutes);
 app.use("/events/:id/comments", eventCommentRoutes);
+app.use("/startups/:id/comments", startupCommentRoutes);
 app.use("/feed", postRoutes);
 app.use("/users", userRoutes);
 app.use("/events", eventRoutes);
 app.use("/startups", startupRoutes);
-
 app.use("/", indexRoutes);
 
 app.get("/", function(req, res){
