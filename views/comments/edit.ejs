@@ -2,16 +2,18 @@
 <div class="container mt-5">
     <div class="row mt-5">
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/feed/<%=post_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
+            <form action="/feed/<%=post_id%>/comments/<%=comment._id%>?_method=PUT" onsubmit="checkCommentValidity()" method="POST">
     <p class="display-4 text-center">Edit your Comment</p>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="comment[text]" value="<%=comment.text%>" required>
+                    <input id="com" type="text" class="form-control" name="comment[text]" value="<%=comment.text%>" required>
+                    <h3 id="com2" hidden><%=comment.text%></h3>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" value = "<%=currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1) %> <%=currentUser.lastName.charAt(0).toUpperCase() + currentUser.lastName.slice(1) %>" name="comment[author]" placeholder="author" disabled>
                 </div>
                 <div class="form-group">
                     <input id="date"type="hidden" name="comment[time]" class="form-control">
+                    <h6 hidden id="t2"><%=comment.time%></h6>
                 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-primary btn-block">Edit my Comment!</button>
@@ -23,5 +25,16 @@
 </div>
 <% include ../partials/footer %>
 <script>
-    document.getElementById("date").value = (moment().format('MMMM Do YYYY, h:mm a'));
-</script>
+    function checkCommentValidity() {
+    if(document.getElementById("com").value != document.getElementById("com2").textContent)
+    {
+      
+       document.getElementById("date").value = "edited @ " + (moment().format('MMMM Do YYYY, h:mm a'));
+    }
+    else
+    {
+        document.getElementById("date").value = document.getElementById("t2").textContent;
+    }
+          
+}
+    </script>
