@@ -130,7 +130,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-unlock-alt"></i></span>
                     </div>
-                    <input id="confirmingPassword" type="password" oninvalid="this.setCustomValidity('Passwords do not match!')"oninput="setCustomValidity('')" class="form-control" placeholder="confirm password"required>
+                    <input name="new-password" id="confirmingPassword" type="password" oninvalid="this.setCustomValidity('Passwords do not match!')"oninput="setCustomValidity('')" class="form-control" placeholder="confirm password"required>
                 </div>
                 
                 <div class="form-group">
@@ -172,8 +172,7 @@
         <p style="font-size:1.6em !important;" class="container lead">Connect and interact with fellow innovators, learn about upcoming pitch competitions and events, and interface with potential investors.</p>
     </div>
     <div class="col-lg-8">
-        <img class="img-fluid" style="opacity:0.9;width: 100%; height:79%; display: block;"src="https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/f/72/f72d5110-2325-53ce-9715-3101958376f5/5bad3569b2f71.image.jpg?resize=1200%2C800
-">
+        <img class="img-fluid" style="opacity:0.9;width: 100%; height:79%; display: block;"src="https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/f/72/f72d5110-2325-53ce-9715-3101958376f5/5bad3569b2f71.image.jpg?resize=1200%2C800">
     </div>
     <div style="margin-top:-9.04%;" class="col-lg-8">
         <img class="img-fluid" style="opacity:0.9;width: 100%; height:95%; display: block;"src="https://www.moneredevelopmentservices.com/wp-content/uploads/2018/06/365728-636190610546181732-16x9.jpg">
@@ -194,7 +193,7 @@
         <p class="display-1">Meet our team</p>
     </div>
     <div class="col-lg-4">
-        <a href="https://www.linkedin.com/in/dguckian"><img style="border-radius:1000px; width:289px; height:289px;" class="clearfix img-fluid"src="https://media.licdn.com/dms/image/C4E03AQG-QFqbUp5oQw/profile-displayphoto-shrink_800_800/0?e=1564012800&v=beta&t=hXflz9jIxRDbpwpjDXcPKqH9QEECnImdZmq5ejZBEgI"></a>
+        <a href="https://www.linkedin.com/in/dguckian"><img style="border-radius:1000px; width:289px; height:289px;" class="clearfix img-fluid"src="https://media.licdn.com/dms/image/C4E03AQEqlD_bPOocRA/profile-displayphoto-shrink_800_800/0?e=1564012800&v=beta&t=zMq-mQUTjaGg3Ndpo1h9UvWx8nmrGyup2NIQrWEMBMs"></a>
         <p class="lead">David Guckian</p>
         <p style="margin-top:-10px;" class="lead text-muted">Co-founder, CEO</p>
     </div>
@@ -204,7 +203,7 @@
         <p style="margin-top:-10px;" class="lead text-muted">Co-founder, CTO</p>
     </div>
     <div class="col-lg-4">
-        <a href="https://www.linkedin.com/in/nick-snodgrass-8a7214bb/"><img style="border-radius:1000px; width:289px; height:289px;" class="img-fluid"src="https://media.licdn.com/dms/image/C4E03AQEqlD_bPOocRA/profile-displayphoto-shrink_800_800/0?e=1564012800&v=beta&t=zMq-mQUTjaGg3Ndpo1h9UvWx8nmrGyup2NIQrWEMBMs"></a>
+        <a href="https://www.linkedin.com/in/nick-snodgrass-8a7214bb/"><img style="border-radius:1000px; width:289px; height:289px;" class="img-fluid"src="https://media.licdn.com/dms/image/C4E03AQG-QFqbUp5oQw/profile-displayphoto-shrink_800_800/0?e=1564012800&v=beta&t=hXflz9jIxRDbpwpjDXcPKqH9QEECnImdZmq5ejZBEgI"></a>
         <p class="lead">Nick Snodgrass</p>
         <p style="margin-top:-10px;" class="lead text-muted">Co-founder, COO</p>
     </div>
@@ -217,6 +216,7 @@
 
 </div>
 <script>
+
 var $password = $("#passwordTyping");
 var $confirm = $("#confirmingPassword");
 

@@ -74,9 +74,19 @@ router.post("/", function(req, res){
         lastName = req.body.lastName,
         dateCreated = req.body.dateCreated,
         sex         = req.body.sex,
+        confirmationPassword = req.body.newPassword,
         birthday    = req.body.birthday,
         biography  = req.body.biography,
         email    = req.body.email;
+
+if(password != confirmationPassword)
+{
+   console.log("Passwords not equal!");
+   req.flash("error","Passwords not equal! P.s, stop trying to mess with my JS code!");
+   res.redirect("/");
+}
+else
+{
     User.countDocuments({"email" :email}, function(err, count){
        if(err){
           console.log("Something went wrong while handling id");
@@ -104,6 +114,7 @@ router.post("/", function(req, res){
       });
     }
   });
+}
 });
 router.post("/login", passport.authenticate("local", {
       successRedirect : "/feed",
