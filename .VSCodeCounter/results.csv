@@ -1,0 +1,47 @@
+filename, language, JSON, JavaScript, CSS, Embedded Javascript, comment, blank, total
+app.js, JavaScript, 0, 76, 0, 0, 27, 17, 120
+middleware\index.js, JavaScript, 0, 220, 0, 0, 14, 16, 250
+models\comments.js, JavaScript, 0, 18, 0, 0, 0, 1, 19
+models\eventcomments.js, JavaScript, 0, 20, 0, 0, 0, 2, 22
+models\events.js, JavaScript, 0, 34, 0, 0, 0, 4, 38
+models\personality.js, JavaScript, 0, 20, 0, 0, 0, 1, 21
+models\posts.js, JavaScript, 0, 27, 0, 0, 0, 1, 28
+models\startupcomments.js, JavaScript, 0, 20, 0, 0, 0, 2, 22
+models\startups.js, JavaScript, 0, 33, 0, 0, 1, 1, 35
+models\user.js, JavaScript, 0, 27, 0, 0, 0, 2, 29
+package-lock.json, JSON, 2468, 0, 0, 0, 0, 1, 2469
+package.json, JSON, 45, 0, 0, 0, 0, 1, 46
+public\stylesheets\landingPage.css, CSS, 0, 0, 103, 0, 1, 6, 110
+public\stylesheets\main.css, CSS, 0, 0, 249, 0, 2, 17, 268
+routes\comments.js, JavaScript, 0, 93, 0, 0, 5, 12, 110
+routes\eventcomments.js, JavaScript, 0, 103, 0, 0, 4, 12, 119
+routes\events.js, JavaScript, 0, 170, 0, 0, 8, 14, 192
+routes\index.js, JavaScript, 0, 109, 0, 0, 6, 10, 125
+routes\posts.js, JavaScript, 0, 153, 0, 0, 7, 12, 172
+routes\startupcomments.js, JavaScript, 0, 103, 0, 0, 4, 12, 119
+routes\startups.js, JavaScript, 0, 160, 0, 0, 7, 14, 181
+routes\users.js, JavaScript, 0, 357, 0, 0, 18, 27, 402
+views\comments\edit.ejs, Embedded Javascript, 0, 0, 0, 38, 0, 2, 40
+views\eventComments\edit.ejs, Embedded Javascript, 0, 0, 0, 27, 0, 0, 27
+views\events\edit.ejs, Embedded Javascript, 0, 0, 0, 48, 0, 8, 56
+views\events\index.ejs, Embedded Javascript, 0, 0, 0, 102, 0, 9, 111
+views\events\show.ejs, Embedded Javascript, 0, 0, 0, 192, 0, 17, 209
+views\partials\errorLanding.ejs, Embedded Javascript, 0, 0, 0, 60, 0, 0, 60
+views\partials\errorPage.ejs, Embedded Javascript, 0, 0, 0, 23, 0, 1, 24
+views\partials\footer.ejs, Embedded Javascript, 0, 0, 0, 26, 0, 3, 29
+views\partials\header.ejs, Embedded Javascript, 0, 0, 0, 97, 0, 6, 103
+views\partials\landing.ejs, Embedded Javascript, 0, 0, 0, 251, 0, 18, 269
+views\partials\landingFooter.ejs, Embedded Javascript, 0, 0, 0, 99, 0, 4, 103
+views\posts\edit.ejs, Embedded Javascript, 0, 0, 0, 30, 0, 4, 34
+views\posts\index.ejs, Embedded Javascript, 0, 0, 0, 127, 0, 12, 139
+views\posts\show.ejs, Embedded Javascript, 0, 0, 0, 164, 0, 10, 174
+views\startupComments\edit.ejs, Embedded Javascript, 0, 0, 0, 27, 0, 0, 27
+views\startups\edit.ejs, Embedded Javascript, 0, 0, 0, 78, 0, 11, 89
+views\startups\index.ejs, Embedded Javascript, 0, 0, 0, 114, 0, 9, 123
+views\startups\show.ejs, Embedded Javascript, 0, 0, 0, 130, 0, 28, 158
+views\users\connections.ejs, Embedded Javascript, 0, 0, 0, 92, 0, 0, 92
+views\users\edit.ejs, Embedded Javascript, 0, 0, 0, 71, 0, 1, 72
+views\users\findConnections.ejs, Embedded Javascript, 0, 0, 0, 50, 0, 1, 51
+views\users\index.ejs, Embedded Javascript, 0, 0, 0, 39, 0, 1, 40
+views\users\show.ejs, Embedded Javascript, 0, 0, 0, 384, 0, 24, 408
+Total, -, 2513, 1743, 352, 2269, 104, 354, 7335
