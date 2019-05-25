@@ -74,7 +74,7 @@ router.post("/", function(req, res){
         lastName = req.body.lastName,
         dateCreated = req.body.dateCreated,
         sex         = req.body.sex,
-        confirmationPassword = req.body.newPassword,
+        confirmationPassword = req.body.new-password,
         birthday    = req.body.birthday,
         biography  = req.body.biography,
         email    = req.body.email;
