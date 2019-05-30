@@ -1,13 +1,13 @@
 Directory : c:\Users\qasim\Desktop\Exigence\finna\src\finna source code
-Date : 2019-05-23 02:16:47
-Total : 45 files,  6877 codes, 104 comments, 354 blanks, all 7335 lines
+Date : 2019-05-30 08:14:39
+Total : 45 files,  6875 codes, 104 comments, 355 blanks, all 7334 lines
 
 Languages
 +---------------------+------------+------------+------------+------------+------------+
 | language            | files      | code       | comment    | blank      | total      |
 +---------------------+------------+------------+------------+------------+------------+
 | JSON                |          2 |      2,513 |          0 |          2 |      2,515 |
-| Embedded Javascript |         23 |      2,269 |          0 |        169 |      2,438 |
+| Embedded Javascript |         23 |      2,267 |          0 |        170 |      2,437 |
 | JavaScript          |         18 |      1,743 |        101 |        160 |      2,004 |
 | CSS                 |          2 |        352 |          3 |         23 |        378 |
 +---------------------+------------+------------+------------+------------+------------+
@@ -16,11 +16,11 @@ Directories
 +------------------------------------+------------+------------+------------+------------+------------+
 | path                               | files      | code       | comment    | blank      | total      |
 +------------------------------------+------------+------------+------------+------------+------------+
-| .                                  |         45 |      6,877 |        104 |        354 |      7,335 |
-| views                              |         23 |      2,269 |          0 |        169 |      2,438 |
+| .                                  |         45 |      6,875 |        104 |        355 |      7,334 |
+| views                              |         23 |      2,267 |          0 |        170 |      2,437 |
 | routes                             |          8 |      1,248 |         59 |        113 |      1,420 |
 | views\users                        |          5 |        636 |          0 |         27 |        663 |
-| views\partials                     |          6 |        556 |          0 |         32 |        588 |
+| views\partials                     |          6 |        554 |          0 |         33 |        587 |
 | public\stylesheets                 |          2 |        352 |          3 |         23 |        378 |
 | public                             |          2 |        352 |          3 |         23 |        378 |
 | views\events                       |          3 |        342 |          0 |         34 |        376 |
@@ -68,7 +68,7 @@ Files
 | views\partials\errorPage.ejs       | Embedded Javascript |         23 |          0 |          1 |         24 |
 | views\partials\footer.ejs          | Embedded Javascript |         26 |          0 |          3 |         29 |
 | views\partials\header.ejs          | Embedded Javascript |         97 |          0 |          6 |        103 |
-| views\partials\landing.ejs         | Embedded Javascript |        251 |          0 |         18 |        269 |
+| views\partials\landing.ejs         | Embedded Javascript |        249 |          0 |         19 |        268 |
 | views\partials\landingFooter.ejs   | Embedded Javascript |         99 |          0 |          4 |        103 |
 | views\posts\edit.ejs               | Embedded Javascript |         30 |          0 |          4 |         34 |
 | views\posts\index.ejs              | Embedded Javascript |        127 |          0 |         12 |        139 |
@@ -82,5 +82,5 @@ Files
 | views\users\findConnections.ejs    | Embedded Javascript |         50 |          0 |          1 |         51 |
 | views\users\index.ejs              | Embedded Javascript |         39 |          0 |          1 |         40 |
 | views\users\show.ejs               | Embedded Javascript |        384 |          0 |         24 |        408 |
-| Total                              |                     |      6,877 |        104 |        354 |      7,335 |
+| Total                              |                     |      6,875 |        104 |        355 |      7,334 |
 +------------------------------------+---------------------+------------+------------+------------+------------+

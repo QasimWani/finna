@@ -1,31 +1,31 @@
 # c:\Users\qasim\Desktop\Exigence\finna\src\finna source code
 
-Date : 2019-05-23 02:16:47
+Date : 2019-05-30 08:14:39
 
-Total : 45 files,  6877 codes, 104 comments, 354 blanks, all 7335 lines
+Total : 45 files,  6875 codes, 104 comments, 355 blanks, all 7334 lines
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | JSON | 2 | 2,513 | 0 | 2 | 2,515 |
-| Embedded Javascript | 23 | 2,269 | 0 | 169 | 2,438 |
+| Embedded Javascript | 23 | 2,267 | 0 | 170 | 2,437 |
 | JavaScript | 18 | 1,743 | 101 | 160 | 2,004 |
 | CSS | 2 | 352 | 3 | 23 | 378 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 45 | 6,877 | 104 | 354 | 7,335 |
+| . | 45 | 6,875 | 104 | 355 | 7,334 |
 | middleware | 1 | 220 | 14 | 16 | 250 |
 | models | 8 | 199 | 1 | 14 | 214 |
 | public | 2 | 352 | 3 | 23 | 378 |
 | public\stylesheets | 2 | 352 | 3 | 23 | 378 |
 | routes | 8 | 1,248 | 59 | 113 | 1,420 |
-| views | 23 | 2,269 | 0 | 169 | 2,438 |
+| views | 23 | 2,267 | 0 | 170 | 2,437 |
 | views\comments | 1 | 38 | 0 | 2 | 40 |
 | views\eventComments | 1 | 27 | 0 | 0 | 27 |
 | views\events | 3 | 342 | 0 | 34 | 376 |
-| views\partials | 6 | 556 | 0 | 32 | 588 |
+| views\partials | 6 | 554 | 0 | 33 | 587 |
 | views\posts | 3 | 321 | 0 | 26 | 347 |
 | views\startupComments | 1 | 27 | 0 | 0 | 27 |
 | views\startups | 3 | 322 | 0 | 48 | 370 |
@@ -65,7 +65,7 @@ Total : 45 files,  6877 codes, 104 comments, 354 blanks, all 7335 lines
 | [views\partials\errorPage.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/partials/errorPage.ejs) | Embedded Javascript | 23 | 0 | 1 | 24 |
 | [views\partials\footer.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/partials/footer.ejs) | Embedded Javascript | 26 | 0 | 3 | 29 |
 | [views\partials\header.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/partials/header.ejs) | Embedded Javascript | 97 | 0 | 6 | 103 |
-| [views\partials\landing.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/partials/landing.ejs) | Embedded Javascript | 251 | 0 | 18 | 269 |
+| [views\partials\landing.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/partials/landing.ejs) | Embedded Javascript | 249 | 0 | 19 | 268 |
 | [views\partials\landingFooter.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/partials/landingFooter.ejs) | Embedded Javascript | 99 | 0 | 4 | 103 |
 | [views\posts\edit.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/posts/edit.ejs) | Embedded Javascript | 30 | 0 | 4 | 34 |
 | [views\posts\index.ejs](file:///c%3A/Users/qasim/Desktop/Exigence/finna/src/finna%20source%20code/views/posts/index.ejs) | Embedded Javascript | 127 | 0 | 12 | 139 |

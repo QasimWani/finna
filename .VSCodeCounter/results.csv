@@ -30,7 +30,7 @@ views\partials\errorLanding.ejs, Embedded Javascript, 0, 0, 0, 60, 0, 0, 60
 views\partials\errorPage.ejs, Embedded Javascript, 0, 0, 0, 23, 0, 1, 24
 views\partials\footer.ejs, Embedded Javascript, 0, 0, 0, 26, 0, 3, 29
 views\partials\header.ejs, Embedded Javascript, 0, 0, 0, 97, 0, 6, 103
-views\partials\landing.ejs, Embedded Javascript, 0, 0, 0, 251, 0, 18, 269
+views\partials\landing.ejs, Embedded Javascript, 0, 0, 0, 249, 0, 19, 268
 views\partials\landingFooter.ejs, Embedded Javascript, 0, 0, 0, 99, 0, 4, 103
 views\posts\edit.ejs, Embedded Javascript, 0, 0, 0, 30, 0, 4, 34
 views\posts\index.ejs, Embedded Javascript, 0, 0, 0, 127, 0, 12, 139
@@ -44,4 +44,4 @@ views\users\edit.ejs, Embedded Javascript, 0, 0, 0, 71, 0, 1, 72
 views\users\findConnections.ejs, Embedded Javascript, 0, 0, 0, 50, 0, 1, 51
 views\users\index.ejs, Embedded Javascript, 0, 0, 0, 39, 0, 1, 40
 views\users\show.ejs, Embedded Javascript, 0, 0, 0, 384, 0, 24, 408
-Total, -, 2513, 1743, 352, 2269, 104, 354, 7335
+Total, -, 2513, 1743, 352, 2267, 104, 355, 7334
