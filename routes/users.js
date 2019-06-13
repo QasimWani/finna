@@ -3,6 +3,8 @@ var express = require("express"),
     router  = express.Router(),
     Post = require("../models/posts"),
     User = require("../models/user"),
+    ip = require("public-ip"),
+    geoip = require('geoip-lite'),
     Personality = require("../models/personality"),
     middleware = require("../middleware"),
     Event      = require("../models/events"),
@@ -22,8 +24,14 @@ router.get("/", middleware.isLoggedIn, function(req, res){
       }
       else
       {
-         console.log("All party houses displayed onto the website");
-         res.render("users/index", {users : allUsers});
+        (async () => {
+            var a = (await ip.v4());
+            var address = (await geoip.lookup(a));
+            console.log(address.city);
+            console.log("All party houses displayed onto the website");
+            res.render("users/index", {users : allUsers, address : address.city});
+          })();
+         
       }
       
    });
