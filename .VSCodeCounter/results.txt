@@ -1,14 +1,14 @@
+Date : 2019-06-26 01:03:12
 Directory : c:\Users\qasim\Desktop\Exigence\finna\src\finna source code
-Date : 2019-06-13 03:44:27
-Total : 45 files,  7256 codes, 104 comments, 355 blanks, all 7715 lines
+Total : 45 files,  7257 codes, 104 comments, 358 blanks, all 7719 lines
 
 Languages
 +---------------------+------------+------------+------------+------------+------------+
 | language            | files      | code       | comment    | blank      | total      |
 +---------------------+------------+------------+------------+------------+------------+
 | JSON                |          2 |      2,887 |          0 |          2 |      2,889 |
-| Embedded Javascript |         23 |      2,268 |          0 |        170 |      2,438 |
-| JavaScript          |         18 |      1,749 |        101 |        160 |      2,010 |
+| Embedded Javascript |         23 |      2,268 |          0 |        172 |      2,440 |
+| JavaScript          |         18 |      1,750 |        101 |        161 |      2,012 |
 | CSS                 |          2 |        352 |          3 |         23 |        378 |
 +---------------------+------------+------------+------------+------------+------------+
 
@@ -16,28 +16,28 @@ Directories
 +------------------------------------+------------+------------+------------+------------+------------+
 | path                               | files      | code       | comment    | blank      | total      |
 +------------------------------------+------------+------------+------------+------------+------------+
-| .                                  |         45 |      7,256 |        104 |        355 |      7,715 |
-| views                              |         23 |      2,268 |          0 |        170 |      2,438 |
-| routes                             |          8 |      1,248 |         59 |        113 |      1,420 |
-| views\users                        |          5 |        636 |          0 |         27 |        663 |
-| views\partials                     |          6 |        555 |          0 |         33 |        588 |
-| public\stylesheets                 |          2 |        352 |          3 |         23 |        378 |
+| .                                  |         45 |      7,257 |        104 |        358 |      7,719 |
+| views                              |         23 |      2,268 |          0 |        172 |      2,440 |
+| routes                             |          8 |      1,255 |         59 |        114 |      1,428 |
+| views\users                        |          5 |        637 |          0 |         28 |        665 |
+| views\partials                     |          6 |        554 |          0 |         34 |        588 |
 | public                             |          2 |        352 |          3 |         23 |        378 |
+| public\stylesheets                 |          2 |        352 |          3 |         23 |        378 |
 | views\events                       |          3 |        342 |          0 |         34 |        376 |
 | views\startups                     |          3 |        322 |          0 |         48 |        370 |
 | views\posts                        |          3 |        321 |          0 |         26 |        347 |
 | middleware                         |          1 |        220 |         14 |         16 |        250 |
 | models                             |          8 |        199 |          1 |         14 |        214 |
 | views\comments                     |          1 |         38 |          0 |          2 |         40 |
-| views\startupComments              |          1 |         27 |          0 |          0 |         27 |
 | views\eventComments                |          1 |         27 |          0 |          0 |         27 |
+| views\startupComments              |          1 |         27 |          0 |          0 |         27 |
 +------------------------------------+------------+------------+------------+------------+------------+
 
 Files
 +------------------------------------+---------------------+------------+------------+------------+------------+
 | filename                           | language            | code       | comment    | blank      | total      |
 +------------------------------------+---------------------+------------+------------+------------+------------+
-| app.js                             | JavaScript          |         82 |         27 |         17 |        126 |
+| app.js                             | JavaScript          |         76 |         27 |         17 |        120 |
 | middleware\index.js                | JavaScript          |        220 |         14 |         16 |        250 |
 | models\comments.js                 | JavaScript          |         18 |          0 |          1 |         19 |
 | models\eventcomments.js            | JavaScript          |         20 |          0 |          2 |         22 |
@@ -58,7 +58,7 @@ Files
 | routes\posts.js                    | JavaScript          |        153 |          7 |         12 |        172 |
 | routes\startupcomments.js          | JavaScript          |        103 |          4 |         12 |        119 |
 | routes\startups.js                 | JavaScript          |        160 |          7 |         14 |        181 |
-| routes\users.js                    | JavaScript          |        357 |         18 |         27 |        402 |
+| routes\users.js                    | JavaScript          |        364 |         18 |         28 |        410 |
 | views\comments\edit.ejs            | Embedded Javascript |         38 |          0 |          2 |         40 |
 | views\eventComments\edit.ejs       | Embedded Javascript |         27 |          0 |          0 |         27 |
 | views\events\edit.ejs              | Embedded Javascript |         48 |          0 |          8 |         56 |
@@ -68,7 +68,7 @@ Files
 | views\partials\errorPage.ejs       | Embedded Javascript |         23 |          0 |          1 |         24 |
 | views\partials\footer.ejs          | Embedded Javascript |         26 |          0 |          3 |         29 |
 | views\partials\header.ejs          | Embedded Javascript |         97 |          0 |          6 |        103 |
-| views\partials\landing.ejs         | Embedded Javascript |        250 |          0 |         19 |        269 |
+| views\partials\landing.ejs         | Embedded Javascript |        249 |          0 |         20 |        269 |
 | views\partials\landingFooter.ejs   | Embedded Javascript |         99 |          0 |          4 |        103 |
 | views\posts\edit.ejs               | Embedded Javascript |         30 |          0 |          4 |         34 |
 | views\posts\index.ejs              | Embedded Javascript |        127 |          0 |         12 |        139 |
@@ -80,7 +80,7 @@ Files
 | views\users\connections.ejs        | Embedded Javascript |         92 |          0 |          0 |         92 |
 | views\users\edit.ejs               | Embedded Javascript |         71 |          0 |          1 |         72 |
 | views\users\findConnections.ejs    | Embedded Javascript |         50 |          0 |          1 |         51 |
-| views\users\index.ejs              | Embedded Javascript |         39 |          0 |          1 |         40 |
+| views\users\index.ejs              | Embedded Javascript |         40 |          0 |          2 |         42 |
 | views\users\show.ejs               | Embedded Javascript |        384 |          0 |         24 |        408 |
-| Total                              |                     |      7,256 |        104 |        355 |      7,715 |
+| Total                              |                     |      7,257 |        104 |        358 |      7,719 |
 +------------------------------------+---------------------+------------+------------+------------+------------+
