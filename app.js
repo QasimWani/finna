@@ -15,8 +15,8 @@ const express = require("express"),
 
 // const Nexmo = require('nexmo');
 // const nexmo = new Nexmo({
-//   apiKey: '4bae7a89',
-//   apiSecret: 'tklSKztg8pF6dv3H'
+//   apiKey: process.env.NexmoAPIKEY,
+//   apiSecret: process.env.NexmoAPISECRET
 // });
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
